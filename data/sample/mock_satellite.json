@@ -1,0 +1,55 @@
+{
+  "collection": "COPERNICUS/S2_SR_HARMONIZED",
+  "cloud_mask": "COPERNICUS/S2_CLOUD_PROBABILITY",
+  "latest_pass": "2026-08-16T05:22:18Z",
+  "metrics": {
+    "nag-seg-001": {
+      "ndwi": 0.35,
+      "mndwi": 0.42,
+      "ndti": 0.08,
+      "ndvi": 0.55,
+      "temporal_change_percent": -2.1,
+      "satellite_score": 18
+    },
+    "nag-seg-002": {
+      "ndwi": 0.22,
+      "mndwi": 0.28,
+      "ndti": 0.21,
+      "ndvi": 0.38,
+      "temporal_change_percent": 4.5,
+      "satellite_score": 35
+    },
+    "nag-seg-003": {
+      "ndwi": 0.15,
+      "mndwi": 0.10,
+      "ndti": 0.45,
+      "ndvi": 0.20,
+      "temporal_change_percent": 12.8,
+      "satellite_score": 68
+    },
+    "nag-seg-004": {
+      "ndwi": 0.05,
+      "mndwi": -0.02,
+      "ndti": 0.62,
+      "ndvi": 0.12,
+      "temporal_change_percent": 24.3,
+      "satellite_score": 78
+    },
+    "nag-seg-005": {
+      "ndwi": 0.18,
+      "mndwi": 0.15,
+      "ndti": 0.38,
+      "ndvi": 0.25,
+      "temporal_change_percent": 8.2,
+      "satellite_score": 52
+    },
+    "nag-seg-006": {
+      "ndwi": 0.25,
+      "mndwi": 0.30,
+      "ndti": 0.22,
+      "ndvi": 0.40,
+      "temporal_change_percent": 3.1,
+      "satellite_score": 42
+    }
+  }
+}

@@ -1,0 +1,82 @@
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import MapView from './components/MapView';
+import SegmentDetails from './components/SegmentDetails';
+import PhotoUploader from './components/PhotoUploader';
+import { fetchSegments, fetchSegmentDetails } from './services/api';
+
+export default function App() {
+  const [segments, setSegments] = useState([]);
+  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
+  const [selectedDetails, setSelectedDetails] = useState(null);
+  const [mockMode, setMockMode] = useState(true);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Load all segments on mount
+  useEffect(() => {
+    loadSegments();
+  }, []);
+
+  const loadSegments = async () => {
+    setLoading(true);
+    const list = await fetchSegments();
+    setSegments(list);
+    if (list.length > 0 && !selectedSegmentId) {
+      handleSelectSegment(list[0].segment_id);
+    }
+    setLoading(false);
+  };
+
+  const handleSelectSegment = async (id) => {
+    setSelectedSegmentId(id);
+    const details = await fetchSegmentDetails(id);
+    setSelectedDetails(details);
+  };
+
+  const handleUploadSuccess = (segmentId) => {
+    loadSegments();
+    handleSelectSegment(segmentId);
+  };
+
+  return (
+    <div className="h-screen w-screen flex flex-col bg-dark-900 overflow-hidden">
+      {/* Top Navbar */}
+      <Navbar
+        mockMode={mockMode}
+        onToggleMock={() => setMockMode(!mockMode)}
+        onOpenUpload={() => setIsUploadOpen(true)}
+      />
+
+      {/* Main Split Layout */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left: Leaflet Hotspot Map */}
+        <div className="flex-1 h-full relative">
+          <MapView
+            segments={segments}
+            selectedSegmentId={selectedSegmentId}
+            onSelectSegment={handleSelectSegment}
+          />
+        </div>
+
+        {/* Right: Segment Evidence & Analysis Sidebar */}
+        <div className="w-[420px] h-full">
+          <SegmentDetails
+            segment={selectedDetails}
+            onOpenUpload={() => setIsUploadOpen(true)}
+          />
+        </div>
+      </div>
+
+      {/* Upload Modal */}
+      {isUploadOpen && (
+        <PhotoUploader
+          segments={segments}
+          defaultSegmentId={selectedSegmentId}
+          onClose={() => setIsUploadOpen(false)}
+          onSuccess={handleUploadSuccess}
+        />
+      )}
+    </div>
+  );
+}

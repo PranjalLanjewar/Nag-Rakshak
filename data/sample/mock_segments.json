@@ -1,0 +1,179 @@
+[
+  {
+    "segment_id": "nag-seg-001",
+    "name": "Ambazari Spillway to Subhash Nagar",
+    "length_km": 2.4,
+    "centroid": [21.1275, 79.0520],
+    "investigation_priority_score": 18,
+    "priority_level": "Low",
+    "satellite_metrics": {
+      "ndwi": 0.35,
+      "mndwi": 0.42,
+      "ndti": 0.08,
+      "ndvi": 0.55,
+      "temporal_change_percent": -2.1,
+      "satellite_score": 18,
+      "cloud_cover_percent": 1.2,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Routine satellite monitoring; segment water clarity is optimal.",
+    "last_updated": "2026-08-17T10:00:00Z"
+  },
+  {
+    "segment_id": "nag-seg-002",
+    "name": "Subhash Nagar to Krazy Castle Stretch",
+    "length_km": 1.8,
+    "centroid": [21.1310, 79.0620],
+    "investigation_priority_score": 38,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.22,
+      "mndwi": 0.28,
+      "ndti": 0.21,
+      "ndvi": 0.38,
+      "temporal_change_percent": 4.5,
+      "satellite_score": 35,
+      "cloud_cover_percent": 2.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-001",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 06_04_30 PM.png",
+        "uploaded_at": "2026-08-17T09:15:00Z",
+        "ground_score": 42,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.88
+        },
+        "notes": "Minor plastic debris accumulation near culvert"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Schedule routine trash cleanup within 7 days.",
+    "last_updated": "2026-08-17T11:20:00Z"
+  },
+  {
+    "segment_id": "nag-seg-003",
+    "name": "Krazy Castle to Panchsheel Square",
+    "length_km": 3.1,
+    "centroid": [21.1350, 79.0740],
+    "investigation_priority_score": 68,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.15,
+      "mndwi": 0.10,
+      "ndti": 0.45,
+      "ndvi": 0.20,
+      "temporal_change_percent": 12.8,
+      "satellite_score": 68,
+      "cloud_cover_percent": 0.5,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Dispatch field team for water turbidity testing within 48 hours.",
+    "last_updated": "2026-08-17T08:00:00Z"
+  },
+  {
+    "segment_id": "nag-seg-004",
+    "name": "Panchsheel Square to Sitabuldi Bridge",
+    "length_km": 2.2,
+    "centroid": [21.1400, 79.0850],
+    "investigation_priority_score": 88,
+    "priority_level": "Critical",
+    "satellite_metrics": {
+      "ndwi": 0.05,
+      "mndwi": -0.02,
+      "ndti": 0.62,
+      "ndvi": 0.12,
+      "temporal_change_percent": 24.3,
+      "satellite_score": 78,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-002",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 08_09_01 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 94,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.96
+        },
+        "notes": "Heavy chemical foam and industrial runoff visible under Sitabuldi bridge"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Immediate emergency inspection & physical containment barrier deployment.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "nag-seg-005",
+    "name": "Sitabuldi Bridge to Mokshdham",
+    "length_km": 2.9,
+    "centroid": [21.1440, 79.0980],
+    "investigation_priority_score": 58,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.18,
+      "mndwi": 0.15,
+      "ndti": 0.38,
+      "ndvi": 0.25,
+      "temporal_change_percent": 8.2,
+      "satellite_score": 52,
+      "cloud_cover_percent": 0.8,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-003",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 11_19_18 PM.png",
+        "uploaded_at": "2026-08-17T10:45:00Z",
+        "ground_score": 64,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.91
+        },
+        "notes": "Sewage discharge outfall pipe active"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Inspect storm drain outfalls and log sewage discharge source.",
+    "last_updated": "2026-08-17T11:00:00Z"
+  },
+  {
+    "segment_id": "nag-seg-006",
+    "name": "Mokshdham to Pardi Confluence",
+    "length_km": 4.5,
+    "centroid": [21.1480, 79.1150],
+    "investigation_priority_score": 42,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.25,
+      "mndwi": 0.30,
+      "ndti": 0.22,
+      "ndvi": 0.40,
+      "temporal_change_percent": 3.1,
+      "satellite_score": 42,
+      "cloud_cover_percent": 1.5,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Schedule bi-weekly monitoring pass.",
+    "last_updated": "2026-08-17T07:30:00Z"
+  }
+]

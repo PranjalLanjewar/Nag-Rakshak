@@ -1,0 +1,24 @@
+{
+  "name": "nag-river-sentinel-satellite",
+  "version": "1.0.0",
+  "description": "Sentinel-2 spectral index processor and Earth Engine engine for NagRiver Sentinel",
+  "main": "src/gee_client.js",
+  "scripts": {
+    "start": "node src/gee_client.js",
+    "calc": "node src/index_calculator.js",
+    "export": "node src/exporter.js"
+  },
+  "keywords": [
+    "earth-engine",
+    "sentinel-2",
+    "ndwi",
+    "mndwi",
+    "ndti",
+    "ndvi"
+  ],
+  "author": "Person 4 (Satellite Engineer)",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
