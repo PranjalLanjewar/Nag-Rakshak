@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X, UploadCloud, Camera, Sparkles, Check } from 'lucide-react';
 import { uploadGroundPhoto } from '../services/api';
 
-export default function PhotoUploader({ segments, defaultSegmentId, onClose, onSuccess }) {
+export default function PhotoUploader({ segments, defaultSegmentId, mockMode = true, onClose, onSuccess }) {
   const [selectedSegmentId, setSelectedSegmentId] = useState(defaultSegmentId || (segments[0] ? segments[0].segment_id : 'nag-seg-001'));
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -27,7 +27,7 @@ export default function PhotoUploader({ segments, defaultSegmentId, onClose, onS
     formData.append('notes', notes);
 
     try {
-      const res = await uploadGroundPhoto(selectedSegmentId, formData);
+      const res = await uploadGroundPhoto(selectedSegmentId, formData, mockMode);
       setResult(res);
       setLoading(false);
       setTimeout(() => {

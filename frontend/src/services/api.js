@@ -1,5 +1,5 @@
 /**
- * API Service Client with Automatic Mock Fallback
+ * API Service Client with Dynamic Mock Switch Propagation
  * Ownership: Person 1 (Frontend Engineer)
  */
 
@@ -7,9 +7,17 @@ import mockSegmentsList from '../../../data/sample/mock_segments.json';
 
 const API_BASE = '/api';
 
-export async function fetchSegments() {
+function getHeaders(mockMode) {
+  return {
+    'x-mock-mode': mockMode ? 'true' : 'false'
+  };
+}
+
+export async function fetchSegments(mockMode = true) {
   try {
-    const res = await fetch(`${API_BASE}/segments`);
+    const res = await fetch(`${API_BASE}/segments`, {
+      headers: getHeaders(mockMode)
+    });
     if (!res.ok) throw new Error('API failed');
     const json = await res.json();
     return json.data || json;
@@ -28,9 +36,11 @@ export async function fetchSegments() {
   }
 }
 
-export async function fetchSegmentDetails(segmentId) {
+export async function fetchSegmentDetails(segmentId, mockMode = true) {
   try {
-    const res = await fetch(`${API_BASE}/segments/${segmentId}`);
+    const res = await fetch(`${API_BASE}/segments/${segmentId}`, {
+      headers: getHeaders(mockMode)
+    });
     if (!res.ok) throw new Error('API failed');
     const json = await res.json();
     return json.data || json;
@@ -41,11 +51,12 @@ export async function fetchSegmentDetails(segmentId) {
   }
 }
 
-export async function uploadGroundPhoto(segmentId, formData) {
+export async function uploadGroundPhoto(segmentId, formData, mockMode = true) {
   try {
     const res = await fetch(`${API_BASE}/segments/${segmentId}/ground-photo`, {
       method: 'POST',
-      body: formData
+      headers: getHeaders(mockMode),
+      body: formData // Note: Content-Type header is omitted so fetch sets multipart/form-data boundaries automatically
     });
     if (!res.ok) throw new Error('Upload API failed');
     return await res.json();
@@ -53,7 +64,7 @@ export async function uploadGroundPhoto(segmentId, formData) {
     console.warn('[Frontend API] Mocking ground photo upload submission...');
     return {
       success: true,
-      message: 'Photo submitted (Mock Mode)',
+      message: 'Photo submitted (Mock Mode fallback)',
       evidence: {
         id: `ev-${Date.now()}`,
         segment_id: segmentId,

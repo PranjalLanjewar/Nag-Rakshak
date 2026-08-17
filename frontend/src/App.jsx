@@ -13,24 +13,27 @@ export default function App() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Load all segments on mount
+  // Load all segments on mount and when mockMode is toggled
   useEffect(() => {
     loadSegments();
-  }, []);
+  }, [mockMode]);
 
   const loadSegments = async () => {
     setLoading(true);
-    const list = await fetchSegments();
+    const list = await fetchSegments(mockMode);
     setSegments(list);
-    if (list.length > 0 && !selectedSegmentId) {
-      handleSelectSegment(list[0].segment_id);
+    
+    // Default to the first segment or maintain currently selected segment
+    const targetId = selectedSegmentId || (list[0] ? list[0].segment_id : null);
+    if (targetId) {
+      handleSelectSegment(targetId);
     }
     setLoading(false);
   };
 
   const handleSelectSegment = async (id) => {
     setSelectedSegmentId(id);
-    const details = await fetchSegmentDetails(id);
+    const details = await fetchSegmentDetails(id, mockMode);
     setSelectedDetails(details);
   };
 
@@ -73,6 +76,7 @@ export default function App() {
         <PhotoUploader
           segments={segments}
           defaultSegmentId={selectedSegmentId}
+          mockMode={mockMode}
           onClose={() => setIsUploadOpen(false)}
           onSuccess={handleUploadSuccess}
         />

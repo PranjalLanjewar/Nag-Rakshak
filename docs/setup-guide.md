@@ -51,3 +51,46 @@ To switch to real services:
 - **Work Area**: `satellite/src/`, `data/geojson/`
 - **Key Task**: Process Sentinel-2 indices (NDWI, MNDWI, NDTI, NDVI), compute `satellite_score`, update segment GeoJSON.
 - **Run**: `cd satellite && node src/gee_client.js`
+
+---
+
+## ⚡ Supabase Setup Instructions
+
+1. **Create Database Tables**:
+   - Create a project on [Supabase](https://supabase.com).
+   - Open the **SQL Editor** in the dashboard.
+   - Run the SQL script found in [`database/schema.sql`](../database/schema.sql) to create tables and indexes.
+   - Run [`database/seed.sql`](../database/seed.sql) to populate initial segments.
+
+2. **Configure Storage Bucket**:
+   - Go to **Storage** in the Supabase sidebar.
+   - Click **New Bucket**, name it `ground-photos`, and toggle the **Public** switch to `ON`.
+   - Add policy rules: Under **Policies**, select **New Policy** for the bucket and check "Allow public read/write access".
+
+---
+
+## 🚀 Vercel Deployment Instructions
+
+### 1. Deploy the Backend API
+1. Sign in to [Vercel](https://vercel.com).
+2. Click **Add New** > **Project** and select your Nag River repository.
+3. Configure the following settings for the project:
+   - **Framework Preset**: `Other` (or `Express`)
+   - **Root Directory**: `backend`
+4. Under **Environment Variables**, add:
+   - `MOCK_MODE=false`
+   - `SUPABASE_URL=https://your-project.supabase.co`
+   - `SUPABASE_ANON_KEY=your-anon-key`
+   - `VISION_AI_API_KEY=your-ai-api-key`
+5. Click **Deploy**. This gives you a backend URL like `https://nag-river-backend.vercel.app`.
+
+### 2. Deploy the Frontend UI
+1. Click **Add New** > **Project** on Vercel again.
+2. Select the same Nag River repository.
+3. Configure these settings:
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `frontend`
+4. Under **Environment Variables**, add:
+   - `VITE_API_URL=https://nag-river-backend.vercel.app` (pointing to your newly deployed backend Vercel URL).
+5. Click **Deploy**.
+

@@ -3,23 +3,27 @@
  * Ownership: Person 2 (Backend Engineer)
  */
 
-const MOCK_MODE = process.env.MOCK_MODE !== 'false';
-
 let supabaseClient = null;
 
-if (!MOCK_MODE && process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
-  try {
-    const { createClient } = require('@supabase/supabase-js');
-    supabaseClient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
-    console.log('[Database] Connected to Supabase live instance');
-  } catch (e) {
-    console.warn('[Database] @supabase/supabase-js not installed or config missing. Falling back to mock.');
+function getSupabaseClient() {
+  if (supabaseClient) return supabaseClient;
+
+  const url = process.env.SUPABASE_URL;
+  const anonKey = process.env.SUPABASE_ANON_KEY;
+
+  if (url && anonKey) {
+    try {
+      const { createClient } = require('@supabase/supabase-js');
+      supabaseClient = createClient(url, anonKey);
+      console.log('[Database] Connected to Supabase live instance');
+      return supabaseClient;
+    } catch (e) {
+      console.warn('[Database] Failed to initialize Supabase client:', e.message);
+    }
   }
-} else {
-  console.log('[Database] Running in MOCK_MODE=true (In-memory storage)');
+  return null;
 }
 
 module.exports = {
-  supabaseClient,
-  isMock: MOCK_MODE || !supabaseClient
+  getSupabaseClient
 };
