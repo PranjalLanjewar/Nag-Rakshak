@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import MapView from './components/MapView';
 import SegmentDetails from './components/SegmentDetails';
 import PhotoUploader from './components/PhotoUploader';
-import { fetchSegments, fetchSegmentDetails } from './services/api';
+import { fetchSegments, fetchSegmentDetails, syncSatelliteData } from './services/api';
 
 export default function App() {
   const [segments, setSegments] = useState([]);
@@ -12,6 +12,7 @@ export default function App() {
   const [mockMode, setMockMode] = useState(true);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
 
   // Load all segments on mount and when mockMode is toggled
   useEffect(() => {
@@ -42,6 +43,21 @@ export default function App() {
     handleSelectSegment(segmentId);
   };
 
+  const handleSync = async () => {
+    setSyncing(true);
+    try {
+      await syncSatelliteData(mockMode);
+      await loadSegments();
+      if (selectedSegmentId) {
+        await handleSelectSegment(selectedSegmentId);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSyncing(false);
+    }
+  };
+
   return (
     <div className="h-screen w-screen flex flex-col bg-dark-900 overflow-hidden">
       {/* Top Navbar */}
@@ -49,6 +65,8 @@ export default function App() {
         mockMode={mockMode}
         onToggleMock={() => setMockMode(!mockMode)}
         onOpenUpload={() => setIsUploadOpen(true)}
+        syncing={syncing}
+        onSync={handleSync}
       />
 
       {/* Main Split Layout */}

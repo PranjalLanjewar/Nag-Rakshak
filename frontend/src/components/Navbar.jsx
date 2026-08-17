@@ -1,7 +1,7 @@
 import React from 'react';
-import { Waves, ShieldAlert, Database, Camera } from 'lucide-react';
+import { Waves, ShieldAlert, Database, Camera, RefreshCw } from 'lucide-react';
 
-export default function Navbar({ mockMode, onToggleMock, onOpenUpload }) {
+export default function Navbar({ mockMode, onToggleMock, onOpenUpload, syncing, onSync }) {
   return (
     <header className="bg-dark-800 border-b border-dark-700 px-6 py-3 flex items-center justify-between z-30 relative shadow-lg">
       <div className="flex items-center space-x-3">
@@ -19,7 +19,17 @@ export default function Navbar({ mockMode, onToggleMock, onOpenUpload }) {
         </div>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-3">
+        {/* GEE Sync Button */}
+        <button
+          onClick={onSync}
+          disabled={syncing}
+          className="flex items-center space-x-2 bg-dark-750 hover:bg-dark-700 border border-dark-600 text-gray-200 text-xs font-semibold px-4 py-2 rounded-lg transition-all"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin text-indigo-400' : 'text-gray-400'}`} />
+          <span>{syncing ? 'Syncing GEE...' : 'Sync GEE Satellite'}</span>
+        </button>
+
         {/* Upload Button */}
         <button
           onClick={onOpenUpload}

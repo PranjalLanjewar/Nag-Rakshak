@@ -99,6 +99,94 @@ export default function SegmentDetails({ segment, onOpenUpload }) {
         </div>
       </div>
 
+      {/* Historical Environmental Trends SVG Chart */}
+      <div className="space-y-3 pt-4 border-t border-dark-700">
+        <div className="flex items-center space-x-2 text-gray-200">
+          <Satellite className="w-4 h-4 text-indigo-400" />
+          <h3 className="text-sm font-bold">Historical Index Trends (6-Month)</h3>
+        </div>
+
+        {segment.historical_data && segment.historical_data.length > 0 ? (
+          <div className="bg-dark-900 p-4 rounded-xl border border-dark-700 space-y-3">
+            {/* Chart Legend */}
+            <div className="flex justify-between items-center text-[10px] text-gray-400 font-semibold px-1">
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-0.5 bg-cyan-400 inline-block"></span>
+                <span>NDWI (Water)</span>
+              </div>
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-0.5 bg-amber-400 inline-block"></span>
+                <span>NDTI (Turbidity)</span>
+              </div>
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-0.5 bg-emerald-400 inline-block"></span>
+                <span>NDVI (Algae)</span>
+              </div>
+            </div>
+
+            {/* Custom SVG Line Chart */}
+            <div className="relative">
+              <svg viewBox="0 0 340 150" className="w-full h-36 overflow-visible">
+                {/* Horizontal Gridlines */}
+                <line x1="35" y1="20" x2="330" y2="20" stroke="#374151" strokeWidth="1" strokeDasharray="3 3" />
+                <line x1="35" y1="70" x2="330" y2="70" stroke="#374151" strokeWidth="1" strokeDasharray="3 3" />
+                <line x1="35" y1="120" x2="330" y2="120" stroke="#374151" strokeWidth="1" />
+
+                {/* Y-Axis Labels */}
+                <text x="5" y="24" fill="#9CA3AF" fontSize="10" className="font-mono">0.8</text>
+                <text x="5" y="74" fill="#9CA3AF" fontSize="10" className="font-mono">0.3</text>
+                <text x="5" y="124" fill="#9CA3AF" fontSize="10" className="font-mono">-0.2</text>
+
+                {/* Helper variables for coordinates */}
+                {(() => {
+                  const history = segment.historical_data || [];
+                  const getX = (idx) => 35 + (idx / 5) * 285;
+                  const getY = (val) => 120 - ((val - (-0.2)) / 1.0) * 100;
+
+                  // Render paths
+                  const ndwiPts = history.map((pt, i) => `${getX(i)},${getY(pt.ndwi)}`).join(' L ');
+                  const ndtiPts = history.map((pt, i) => `${getX(i)},${getY(pt.ndti)}`).join(' L ');
+                  const ndviPts = history.map((pt, i) => `${getX(i)},${getY(pt.ndvi)}`).join(' L ');
+
+                  return (
+                    <>
+                      {/* Lines */}
+                      {ndwiPts && <path d={`M ${ndwiPts}`} fill="none" stroke="#22D3EE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
+                      {ndtiPts && <path d={`M ${ndtiPts}`} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
+                      {ndviPts && <path d={`M ${ndviPts}`} fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
+
+                      {/* Interactive Circles & Labels */}
+                      {history.map((pt, i) => {
+                        const x = getX(i);
+                        const month = new Date(pt.acquisition_date).toLocaleDateString('en-US', { month: 'short' });
+                        
+                        return (
+                          <g key={`nodes-${i}`}>
+                            {/* X-Axis labels */}
+                            <text x={x} y="142" fill="#9CA3AF" fontSize="10" textAnchor="middle" className="font-mono">
+                              {month}
+                            </text>
+                            
+                            {/* Data points */}
+                            <circle cx={x} cy={getY(pt.ndwi)} r="3.5" fill="#22D3EE" stroke="#0F172A" strokeWidth="1" />
+                            <circle cx={x} cy={getY(pt.ndti)} r="3.5" fill="#F59E0B" stroke="#0F172A" strokeWidth="1" />
+                            <circle cx={x} cy={getY(pt.ndvi)} r="3.5" fill="#10B981" stroke="#0F172A" strokeWidth="1" />
+                          </g>
+                        );
+                      })}
+                    </>
+                  );
+                })()}
+              </svg>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-dark-900/60 p-4 rounded-xl border border-dark-700 text-center text-xs text-gray-400">
+            No historical trend data available yet for this segment.
+          </div>
+        )}
+      </div>
+
       {/* Ground Verification Section */}
       <div className="space-y-3 pt-2 border-t border-dark-700">
         <div className="flex items-center justify-between">

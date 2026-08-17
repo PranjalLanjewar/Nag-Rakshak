@@ -41,6 +41,32 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Helper to generate mock historical data for graphing
+function getHistoricalMockData(segmentId, currentMetrics) {
+  const history = [];
+  const baseScore = currentMetrics ? (currentMetrics.satellite_score || 50) : 50;
+  const seed = parseInt(segmentId.replace(/\D/g, '')) || 1;
+
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date();
+    d.setMonth(d.getMonth() - i);
+    const dateStr = d.toISOString().split('T')[0].substring(0, 7) + "-15";
+    
+    // Smooth sinusoidal monthly variation to simulate dry/wet cycles
+    const variation = Math.sin((i + seed) * 1.2) * 15;
+    const score = Math.min(100, Math.max(0, Math.round(baseScore + variation)));
+    
+    history.push({
+      acquisition_date: dateStr,
+      ndwi: Number(((currentMetrics?.ndwi || 0.2) + (variation * 0.003)).toFixed(3)),
+      ndti: Number(((currentMetrics?.ndti || 0.3) - (variation * 0.004)).toFixed(3)),
+      ndvi: Number(((currentMetrics?.ndvi || 0.4) + (variation * 0.002)).toFixed(3)),
+      satellite_score: score
+    });
+  }
+  return history;
+}
+
 // GET /api/segments/:id - Get details of a single segment
 router.get('/:id', async (req, res) => {
   const segmentId = req.params.id;
@@ -75,6 +101,23 @@ router.get('/:id', async (req, res) => {
           .eq('segment_id', segmentId)
           .order('uploaded_at', { ascending: false });
 
+        // Fetch all historical satellite metrics
+        const { data: satHistory } = await supabase
+          .from('satellite_metrics')
+          .select('*')
+          .eq('segment_id', segmentId)
+          .order('acquisition_date', { ascending: true });
+
+        const currentSat = satList && satList[0] ? {
+          ndwi: Number(satList[0].ndwi),
+          mndwi: Number(satList[0].mndwi),
+          ndti: Number(satList[0].ndti),
+          ndvi: Number(satList[0].ndvi),
+          temporal_change_percent: Number(satList[0].temporal_change_percent),
+          satellite_score: satList[0].satellite_score,
+          acquisition_date: satList[0].acquisition_date
+        } : null;
+
         // Map database response to standard data contract
         const detailedSegment = {
           segment_id: segment.segment_id,
@@ -85,15 +128,7 @@ router.get('/:id', async (req, res) => {
           investigation_priority_score: segment.priority_score,
           priority_level: segment.priority_level,
           last_updated: segment.last_updated,
-          satellite_metrics: satList && satList[0] ? {
-            ndwi: Number(satList[0].ndwi),
-            mndwi: Number(satList[0].mndwi),
-            ndti: Number(satList[0].ndti),
-            ndvi: Number(satList[0].ndvi),
-            temporal_change_percent: Number(satList[0].temporal_change_percent),
-            satellite_score: satList[0].satellite_score,
-            acquisition_date: satList[0].acquisition_date
-          } : null,
+          satellite_metrics: currentSat,
           ground_evidence: (groundList || []).map(g => ({
             id: g.id,
             photo_url: g.photo_url,
@@ -108,7 +143,16 @@ router.get('/:id', async (req, res) => {
             },
             notes: g.notes
           })),
-          evidence_agreement: segment.has_ground_data ? 'High Agreement' : 'Satellite Only', // Simple mapper
+          historical_data: satHistory && satHistory.length >= 2 
+            ? satHistory.map(h => ({
+                acquisition_date: h.acquisition_date,
+                ndwi: Number(h.ndwi),
+                ndti: Number(h.ndti),
+                ndvi: Number(h.ndvi),
+                satellite_score: h.satellite_score
+              }))
+            : getHistoricalMockData(segmentId, currentSat),
+          evidence_agreement: segment.has_ground_data ? 'High Agreement' : 'Satellite Only',
           recommended_action: segment.priority_level === 'Critical' 
             ? 'Immediate priority inspection required.' 
             : 'Scheduled monitoring.'
@@ -124,7 +168,15 @@ router.get('/:id', async (req, res) => {
     if (!segment) {
       return res.status(404).json({ success: false, error: 'Segment not found' });
     }
-    res.json({ success: true, live: false, data: segment });
+    
+    // Add simulated historical data to mock segment response
+    const currentSat = segment.satellite_metrics;
+    const responseData = {
+      ...segment,
+      historical_data: getHistoricalMockData(segmentId, currentSat)
+    };
+    
+    res.json({ success: true, live: false, data: responseData });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

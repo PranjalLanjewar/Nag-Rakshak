@@ -9,6 +9,7 @@ const path = require('path');
 const segmentRoutes = require('./routes/segments');
 const scoringRoutes = require('./routes/scoring');
 const groundAiRoutes = require('./routes/ground-ai');
+const syncRoutes = require('./routes/sync');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../../assests')));
 app.use('/api/segments', segmentRoutes);
 app.use('/api/scoring', scoringRoutes);
 app.use('/api/segments', groundAiRoutes);
+app.use('/api/satellite', syncRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
