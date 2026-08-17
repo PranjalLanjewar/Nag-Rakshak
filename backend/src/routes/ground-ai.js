@@ -116,7 +116,7 @@ router.post('/:id/ground-photo', upload.single('photo'), async (req, res) => {
       const { error: updateErr } = await supabase
         .from('river_segments')
         .update({
-          investigation_priority_score: fusedResult.investigation_priority_score,
+          priority_score: fusedResult.priority_score,
           priority_level: fusedResult.priority_level,
           has_ground_data: true,
           last_updated: new Date().toISOString()

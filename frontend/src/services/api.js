@@ -28,7 +28,8 @@ export async function fetchSegments(mockMode = true) {
       name: s.name,
       length_km: s.length_km,
       centroid: s.centroid,
-      investigation_priority_score: s.investigation_priority_score,
+      priority_score: s.priority_score,
+      investigation_priority_score: s.priority_score,
       priority_level: s.priority_level,
       has_ground_data: s.ground_evidence && s.ground_evidence.length > 0,
       last_updated: s.last_updated
@@ -80,6 +81,7 @@ export async function uploadGroundPhoto(segmentId, formData, mockMode = true) {
         }
       },
       updated_fused_score: {
+        priority_score: 85,
         investigation_priority_score: 85,
         priority_level: 'Critical'
       }

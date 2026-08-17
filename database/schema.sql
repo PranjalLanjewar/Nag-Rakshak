@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS river_segments (
     name VARCHAR(255) NOT NULL,
     length_km NUMERIC(5, 2) NOT NULL,
     centroid JSONB NOT NULL,
-    investigation_priority_score INT DEFAULT 0 CHECK (investigation_priority_score BETWEEN 0 AND 100),
+    priority_score INT DEFAULT 0 CHECK (priority_score BETWEEN 0 AND 100),
     priority_level VARCHAR(20) DEFAULT 'Low' CHECK (priority_level IN ('Low', 'Moderate', 'High', 'Critical')),
     has_ground_data BOOLEAN DEFAULT FALSE,
     last_updated TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP

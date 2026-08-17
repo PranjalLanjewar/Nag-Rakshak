@@ -23,7 +23,12 @@ router.get('/', async (req, res) => {
         .order('segment_id', { ascending: true });
 
       if (!error && data) {
-        return res.json({ success: true, count: data.length, live: true, data });
+        const mappedData = data.map(s => ({
+          ...s,
+          priority_score: s.priority_score,
+          investigation_priority_score: s.priority_score
+        }));
+        return res.json({ success: true, count: mappedData.length, live: true, data: mappedData });
       }
       console.warn('[Database] Supabase query failed, falling back to mock data:', error);
     }
@@ -76,7 +81,8 @@ router.get('/:id', async (req, res) => {
           name: segment.name,
           length_km: Number(segment.length_km),
           centroid: segment.centroid,
-          investigation_priority_score: segment.investigation_priority_score,
+          priority_score: segment.priority_score,
+          investigation_priority_score: segment.priority_score,
           priority_level: segment.priority_level,
           last_updated: segment.last_updated,
           satellite_metrics: satList && satList[0] ? {

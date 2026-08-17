@@ -1,27 +1,27 @@
--- NagRiver Sentinel Initial Seed Data
-
-INSERT INTO river_segments (segment_id, name, length_km, centroid, investigation_priority_score, priority_level, has_ground_data)
+-- NagRiver Sentinel Initial Seed Data for OSM Segments
+INSERT INTO river_segments (segment_id, name, length_km, centroid, priority_score, priority_level, has_ground_data)
 VALUES
-('nag-seg-001', 'Ambazari Spillway to Subhash Nagar', 2.4, '[21.1275, 79.0520]', 18, 'Low', false),
-('nag-seg-002', 'Subhash Nagar to Krazy Castle Stretch', 1.8, '[21.1310, 79.0620]', 38, 'Moderate', true),
-('nag-seg-003', 'Krazy Castle to Panchsheel Square', 3.1, '[21.1350, 79.0740]', 68, 'High', false),
-('nag-seg-004', 'Panchsheel Square to Sitabuldi Bridge', 2.2, '[21.1400, 79.0850]', 88, 'Critical', true),
-('nag-seg-005', 'Sitabuldi Bridge to Mokshdham', 2.9, '[21.1440, 79.0980]', 58, 'High', true),
-('nag-seg-006', 'Mokshdham to Pardi Confluence', 4.5, '[21.1480, 79.1150]', 42, 'Moderate', false)
-ON CONFLICT (segment_id) DO NOTHING;
-
-INSERT INTO satellite_metrics (segment_id, ndwi, mndwi, ndti, ndvi, temporal_change_percent, satellite_score, cloud_cover_percent, acquisition_date)
-VALUES
-('nag-seg-001', 0.35, 0.42, 0.08, 0.55, -2.1, 18, 1.2, '2026-08-16'),
-('nag-seg-002', 0.22, 0.28, 0.21, 0.38, 4.5, 35, 2.0, '2026-08-16'),
-('nag-seg-003', 0.15, 0.10, 0.45, 0.20, 12.8, 68, 0.5, '2026-08-16'),
-('nag-seg-004', 0.05, -0.02, 0.62, 0.12, 24.3, 78, 1.0, '2026-08-16'),
-('nag-seg-005', 0.18, 0.15, 0.38, 0.25, 8.2, 52, 0.8, '2026-08-16'),
-('nag-seg-006', 0.25, 0.30, 0.22, 0.40, 3.1, 42, 1.5, '2026-08-16');
-
-INSERT INTO ground_evidence (id, segment_id, photo_url, lat, lng, waste_detected, foam_detected, discoloration_detected, bank_degradation_detected, confidence_score, ground_score, notes)
-VALUES
-('ev-001', 'nag-seg-002', '/assests/ChatGPT Image Aug 15, 2026, 06_04_30 PM.png', 21.1310, 79.0620, true, false, false, true, 0.88, 42, 'Minor plastic debris accumulation near culvert'),
-('ev-002', 'nag-seg-004', '/assests/ChatGPT Image Aug 15, 2026, 08_09_01 PM.png', 21.1400, 79.0850, true, true, true, true, 0.96, 94, 'Heavy chemical foam and industrial runoff visible under Sitabuldi bridge'),
-('ev-003', 'nag-seg-005', '/assests/ChatGPT Image Aug 15, 2026, 11_19_18 PM.png', 21.1440, 79.0980, true, false, true, false, 0.91, 64, 'Sewage discharge outfall pipe active')
-ON CONFLICT (id) DO NOTHING;
+('S001', 'Nag River Segment S001', 0.3, '[21.12458, 79.04299]', 15, 'Low', false),
+('S002', 'Nag River Segment S002', 0.42, '[21.12574, 79.04465]', 19, 'Low', true),
+('S003', 'Nag River Segment S003', 0.44, '[21.12904, 79.04805]', 23, 'Low', false),
+('S004', 'Nag River Segment S004', 0.24, '[21.12987, 79.05009]', 27, 'Moderate', false),
+('S005', 'Nag River Segment S005', 0.64, '[21.13049, 79.05457]', 31, 'Moderate', true),
+('S006', 'Nag River Segment S006', 0.47, '[21.13356, 79.05801]', 35, 'Moderate', false),
+('S007', 'Nag River Segment S007', 2.97, '[21.13732, 79.07221]', 39, 'Moderate', false),
+('S008', 'Nag River Segment S008', 0.26, '[21.1387, 79.08547]', 43, 'Moderate', true),
+('S009', 'Nag River Segment S009', 0.42, '[21.13757, 79.08837]', 47, 'Moderate', false),
+('S010', 'Nag River Segment S010', 0.44, '[21.13719, 79.09208]', 51, 'High', false),
+('S011', 'Nag River Segment S011', 0.25, '[21.13705, 79.09475]', 55, 'High', true),
+('S012', 'Nag River Segment S012', 0.55, '[21.13731, 79.09855]', 59, 'High', false),
+('S013', 'Nag River Segment S013', 0.4, '[21.13712, 79.1024]', 63, 'High', false),
+('S014', 'Nag River Segment S014', 0.18, '[21.13712, 79.10505]', 67, 'High', true),
+('S015', 'Nag River Segment S015', 0.63, '[21.13849, 79.10759]', 71, 'High', false),
+('S016', 'Nag River Segment S016', 0.24, '[21.1386, 79.11162]', 75, 'High', false),
+('S017', 'Nag River Segment S017', 0.29, '[21.13884, 79.11362]', 79, 'Critical', true),
+('S018', 'Nag River Segment S018', 0.34, '[21.13953, 79.11647]', 83, 'Critical', false),
+('S019', 'Nag River Segment S019', 0.33, '[21.14025, 79.11914]', 87, 'Critical', false),
+('S020', 'Nag River Segment S020', 0.68, '[21.14127, 79.12377]', 91, 'Critical', true)
+ON CONFLICT (segment_id) DO UPDATE SET
+  priority_score = EXCLUDED.priority_score,
+  priority_level = EXCLUDED.priority_level,
+  has_ground_data = EXCLUDED.has_ground_data;

@@ -43,7 +43,7 @@ export default function SegmentDetails({ segment, onOpenUpload }) {
         <div>
           <span className="text-xs text-gray-400 uppercase tracking-wider block">Investigation Priority Score</span>
           <span className="text-3xl font-extrabold text-white mt-1 block">
-            {segment.investigation_priority_score} <span className="text-sm font-normal text-gray-400">/ 100</span>
+            {segment.priority_score ?? segment.investigation_priority_score} <span className="text-sm font-normal text-gray-400">/ 100</span>
           </span>
         </div>
         <div className="text-right">

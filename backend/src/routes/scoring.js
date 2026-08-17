@@ -31,7 +31,7 @@ router.post('/fuse', async (req, res) => {
       const { error } = await supabase
         .from('river_segments')
         .update({
-          investigation_priority_score: result.investigation_priority_score,
+          priority_score: result.priority_score,
           priority_level: result.priority_level,
           has_ground_data: result.has_ground_data,
           last_updated: new Date().toISOString()

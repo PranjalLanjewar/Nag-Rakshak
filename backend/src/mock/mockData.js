@@ -23,7 +23,8 @@ function getAllSegments() {
     name: s.name,
     length_km: s.length_km,
     centroid: s.centroid,
-    investigation_priority_score: s.investigation_priority_score,
+    priority_score: s.priority_score,
+    investigation_priority_score: s.priority_score,
     priority_level: s.priority_level,
     has_ground_data: s.ground_evidence && s.ground_evidence.length > 0,
     last_updated: s.last_updated
@@ -39,7 +40,8 @@ function addGroundEvidence(segmentId, evidence, newFusedScore) {
   if (segment) {
     if (!segment.ground_evidence) segment.ground_evidence = [];
     segment.ground_evidence.unshift(evidence);
-    segment.investigation_priority_score = newFusedScore.investigation_priority_score;
+    segment.priority_score = newFusedScore.priority_score;
+    segment.investigation_priority_score = newFusedScore.priority_score;
     segment.priority_level = newFusedScore.priority_level;
     segment.evidence_agreement = newFusedScore.evidence_agreement;
     segment.recommended_action = newFusedScore.recommended_action;

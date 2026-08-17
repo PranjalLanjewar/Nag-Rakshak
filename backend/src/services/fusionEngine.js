@@ -44,22 +44,23 @@ function generateRecommendedAction(priorityLevel, evidenceAgreement) {
  * Main Evidence Fusion Function
  */
 function fuseEvidence(satelliteScore, groundScore = null) {
-  let investigation_priority_score = satelliteScore;
+  let priority_score = satelliteScore;
 
   if (groundScore !== null && groundScore !== undefined) {
     // Ground evidence weighted higher (65% ground, 35% satellite)
-    investigation_priority_score = Math.round((groundScore * 0.65) + (satelliteScore * 0.35));
+    priority_score = Math.round((groundScore * 0.65) + (satelliteScore * 0.35));
   }
 
   // Ensure strictly bounded [0, 100]
-  investigation_priority_score = Math.min(100, Math.max(0, investigation_priority_score));
+  priority_score = Math.min(100, Math.max(0, priority_score));
 
-  const priority_level = calculatePriorityLevel(investigation_priority_score);
+  const priority_level = calculatePriorityLevel(priority_score);
   const evidence_agreement = calculateEvidenceAgreement(satelliteScore, groundScore);
   const recommended_action = generateRecommendedAction(priority_level, evidence_agreement);
 
   return {
-    investigation_priority_score,
+    priority_score,
+    investigation_priority_score: priority_score,
     priority_level,
     satellite_score: satelliteScore,
     ground_score: groundScore,

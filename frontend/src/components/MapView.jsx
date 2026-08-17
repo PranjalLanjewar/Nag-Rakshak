@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import geoData from '../../../data/geojson/nag_river_segments.json';
+import geoData from '../../../data/geojson/nag-river-segments.json';
 
 // Custom Map Marker Pin for Ground Photos
 const photoIcon = new L.Icon({
@@ -89,7 +89,7 @@ export default function MapView({ segments, selectedSegmentId, onSelectSegment }
                       {seg.priority_level} Priority
                     </span>
                     <span className="text-xs text-gray-300 font-mono">
-                      Score: {seg.investigation_priority_score}
+                      Score: {seg.priority_score ?? seg.investigation_priority_score}
                     </span>
                   </div>
                 </div>

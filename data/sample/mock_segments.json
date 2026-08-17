@@ -1,10 +1,13 @@
 [
   {
-    "segment_id": "nag-seg-001",
-    "name": "Ambazari Spillway to Subhash Nagar",
-    "length_km": 2.4,
-    "centroid": [21.1275, 79.0520],
-    "investigation_priority_score": 18,
+    "segment_id": "S001",
+    "name": "Nag River Segment S001",
+    "length_km": 0.3,
+    "centroid": [
+      21.12458,
+      79.04299
+    ],
+    "priority_score": 15,
     "priority_level": "Low",
     "satellite_metrics": {
       "ndwi": 0.35,
@@ -12,168 +15,593 @@
       "ndti": 0.08,
       "ndvi": 0.55,
       "temporal_change_percent": -2.1,
-      "satellite_score": 18,
-      "cloud_cover_percent": 1.2,
+      "satellite_score": 15,
+      "cloud_cover_percent": 1.0,
       "acquisition_date": "2026-08-16"
     },
     "ground_evidence": [],
     "evidence_agreement": "Satellite Only",
-    "recommended_action": "Routine satellite monitoring; segment water clarity is optimal.",
-    "last_updated": "2026-08-17T10:00:00Z"
+    "recommended_action": "Routine satellite monitoring.",
+    "last_updated": "2026-08-17T12:45:00Z"
   },
   {
-    "segment_id": "nag-seg-002",
-    "name": "Subhash Nagar to Krazy Castle Stretch",
-    "length_km": 1.8,
-    "centroid": [21.1310, 79.0620],
-    "investigation_priority_score": 38,
-    "priority_level": "Moderate",
-    "satellite_metrics": {
-      "ndwi": 0.22,
-      "mndwi": 0.28,
-      "ndti": 0.21,
-      "ndvi": 0.38,
-      "temporal_change_percent": 4.5,
-      "satellite_score": 35,
-      "cloud_cover_percent": 2.0,
-      "acquisition_date": "2026-08-16"
-    },
-    "ground_evidence": [
-      {
-        "id": "ev-001",
-        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 06_04_30 PM.png",
-        "uploaded_at": "2026-08-17T09:15:00Z",
-        "ground_score": 42,
-        "ai_analysis": {
-          "waste_detected": true,
-          "foam_detected": false,
-          "discoloration_detected": false,
-          "bank_degradation_detected": true,
-          "confidence_score": 0.88
-        },
-        "notes": "Minor plastic debris accumulation near culvert"
-      }
+    "segment_id": "S002",
+    "name": "Nag River Segment S002",
+    "length_km": 0.42,
+    "centroid": [
+      21.12574,
+      79.04465
     ],
-    "evidence_agreement": "High Agreement",
-    "recommended_action": "Schedule routine trash cleanup within 7 days.",
-    "last_updated": "2026-08-17T11:20:00Z"
-  },
-  {
-    "segment_id": "nag-seg-003",
-    "name": "Krazy Castle to Panchsheel Square",
-    "length_km": 3.1,
-    "centroid": [21.1350, 79.0740],
-    "investigation_priority_score": 68,
-    "priority_level": "High",
+    "priority_score": 19,
+    "priority_level": "Low",
     "satellite_metrics": {
-      "ndwi": 0.15,
-      "mndwi": 0.10,
-      "ndti": 0.45,
-      "ndvi": 0.20,
-      "temporal_change_percent": 12.8,
-      "satellite_score": 68,
-      "cloud_cover_percent": 0.5,
-      "acquisition_date": "2026-08-16"
-    },
-    "ground_evidence": [],
-    "evidence_agreement": "Satellite Only",
-    "recommended_action": "Dispatch field team for water turbidity testing within 48 hours.",
-    "last_updated": "2026-08-17T08:00:00Z"
-  },
-  {
-    "segment_id": "nag-seg-004",
-    "name": "Panchsheel Square to Sitabuldi Bridge",
-    "length_km": 2.2,
-    "centroid": [21.1400, 79.0850],
-    "investigation_priority_score": 88,
-    "priority_level": "Critical",
-    "satellite_metrics": {
-      "ndwi": 0.05,
-      "mndwi": -0.02,
-      "ndti": 0.62,
-      "ndvi": 0.12,
-      "temporal_change_percent": 24.3,
-      "satellite_score": 78,
+      "ndwi": 0.33,
+      "mndwi": 0.4,
+      "ndti": 0.12,
+      "ndvi": 0.52,
+      "temporal_change_percent": -0.6,
+      "satellite_score": 19,
       "cloud_cover_percent": 1.0,
       "acquisition_date": "2026-08-16"
     },
     "ground_evidence": [
       {
-        "id": "ev-002",
+        "id": "ev-S002-01",
         "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 08_09_01 PM.png",
         "uploaded_at": "2026-08-17T12:30:00Z",
-        "ground_score": 94,
+        "ground_score": 24,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.94
+        },
+        "notes": "Field observation for segment S002"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Routine satellite monitoring.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S003",
+    "name": "Nag River Segment S003",
+    "length_km": 0.44,
+    "centroid": [
+      21.12904,
+      79.04805
+    ],
+    "priority_score": 23,
+    "priority_level": "Low",
+    "satellite_metrics": {
+      "ndwi": 0.31,
+      "mndwi": 0.38,
+      "ndti": 0.16,
+      "ndvi": 0.49,
+      "temporal_change_percent": 0.9,
+      "satellite_score": 23,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Routine satellite monitoring.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S004",
+    "name": "Nag River Segment S004",
+    "length_km": 0.24,
+    "centroid": [
+      21.12987,
+      79.05009
+    ],
+    "priority_score": 27,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.29,
+      "mndwi": 0.36,
+      "ndti": 0.2,
+      "ndvi": 0.46,
+      "temporal_change_percent": 2.4,
+      "satellite_score": 27,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S005",
+    "name": "Nag River Segment S005",
+    "length_km": 0.64,
+    "centroid": [
+      21.13049,
+      79.05457
+    ],
+    "priority_score": 31,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.27,
+      "mndwi": 0.34,
+      "ndti": 0.24,
+      "ndvi": 0.43,
+      "temporal_change_percent": 3.9,
+      "satellite_score": 31,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-S005-01",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 06_04_30 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 36,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.94
+        },
+        "notes": "Field observation for segment S005"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S006",
+    "name": "Nag River Segment S006",
+    "length_km": 0.47,
+    "centroid": [
+      21.13356,
+      79.05801
+    ],
+    "priority_score": 35,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.25,
+      "mndwi": 0.32,
+      "ndti": 0.28,
+      "ndvi": 0.4,
+      "temporal_change_percent": 5.4,
+      "satellite_score": 35,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S007",
+    "name": "Nag River Segment S007",
+    "length_km": 2.97,
+    "centroid": [
+      21.13732,
+      79.07221
+    ],
+    "priority_score": 39,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.23,
+      "mndwi": 0.3,
+      "ndti": 0.32,
+      "ndvi": 0.37,
+      "temporal_change_percent": 6.9,
+      "satellite_score": 39,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S008",
+    "name": "Nag River Segment S008",
+    "length_km": 0.26,
+    "centroid": [
+      21.1387,
+      79.08547
+    ],
+    "priority_score": 43,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.21,
+      "mndwi": 0.28,
+      "ndti": 0.36,
+      "ndvi": 0.34,
+      "temporal_change_percent": 8.4,
+      "satellite_score": 43,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-S008-01",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 08_09_01 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 48,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.94
+        },
+        "notes": "Field observation for segment S008"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S009",
+    "name": "Nag River Segment S009",
+    "length_km": 0.42,
+    "centroid": [
+      21.13757,
+      79.08837
+    ],
+    "priority_score": 47,
+    "priority_level": "Moderate",
+    "satellite_metrics": {
+      "ndwi": 0.19,
+      "mndwi": 0.26,
+      "ndti": 0.4,
+      "ndvi": 0.31,
+      "temporal_change_percent": 9.9,
+      "satellite_score": 47,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S010",
+    "name": "Nag River Segment S010",
+    "length_km": 0.44,
+    "centroid": [
+      21.13719,
+      79.09208
+    ],
+    "priority_score": 51,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.17,
+      "mndwi": 0.24,
+      "ndti": 0.44,
+      "ndvi": 0.28,
+      "temporal_change_percent": 11.4,
+      "satellite_score": 51,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S011",
+    "name": "Nag River Segment S011",
+    "length_km": 0.25,
+    "centroid": [
+      21.13705,
+      79.09475
+    ],
+    "priority_score": 55,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.15,
+      "mndwi": 0.22,
+      "ndti": 0.48,
+      "ndvi": 0.25,
+      "temporal_change_percent": -2.1,
+      "satellite_score": 55,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-S011-01",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 06_04_30 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 60,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.94
+        },
+        "notes": "Field observation for segment S011"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S012",
+    "name": "Nag River Segment S012",
+    "length_km": 0.55,
+    "centroid": [
+      21.13731,
+      79.09855
+    ],
+    "priority_score": 59,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.13,
+      "mndwi": 0.2,
+      "ndti": 0.52,
+      "ndvi": 0.22,
+      "temporal_change_percent": -0.6,
+      "satellite_score": 59,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S013",
+    "name": "Nag River Segment S013",
+    "length_km": 0.4,
+    "centroid": [
+      21.13712,
+      79.1024
+    ],
+    "priority_score": 63,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.11,
+      "mndwi": 0.18,
+      "ndti": 0.56,
+      "ndvi": 0.19,
+      "temporal_change_percent": 0.9,
+      "satellite_score": 63,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S014",
+    "name": "Nag River Segment S014",
+    "length_km": 0.18,
+    "centroid": [
+      21.13712,
+      79.10505
+    ],
+    "priority_score": 67,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.09,
+      "mndwi": 0.16,
+      "ndti": 0.6,
+      "ndvi": 0.16,
+      "temporal_change_percent": 2.4,
+      "satellite_score": 67,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-S014-01",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 08_09_01 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 72,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.94
+        },
+        "notes": "Field observation for segment S014"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S015",
+    "name": "Nag River Segment S015",
+    "length_km": 0.63,
+    "centroid": [
+      21.13849,
+      79.10759
+    ],
+    "priority_score": 71,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.07,
+      "mndwi": 0.14,
+      "ndti": 0.64,
+      "ndvi": 0.13,
+      "temporal_change_percent": 3.9,
+      "satellite_score": 71,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S016",
+    "name": "Nag River Segment S016",
+    "length_km": 0.24,
+    "centroid": [
+      21.1386,
+      79.11162
+    ],
+    "priority_score": 75,
+    "priority_level": "High",
+    "satellite_metrics": {
+      "ndwi": 0.05,
+      "mndwi": 0.12,
+      "ndti": 0.08,
+      "ndvi": 0.1,
+      "temporal_change_percent": 5.4,
+      "satellite_score": 75,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S017",
+    "name": "Nag River Segment S017",
+    "length_km": 0.29,
+    "centroid": [
+      21.13884,
+      79.11362
+    ],
+    "priority_score": 79,
+    "priority_level": "Critical",
+    "satellite_metrics": {
+      "ndwi": 0.03,
+      "mndwi": 0.1,
+      "ndti": 0.12,
+      "ndvi": 0.07,
+      "temporal_change_percent": 6.9,
+      "satellite_score": 79,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-S017-01",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 06_04_30 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 84,
         "ai_analysis": {
           "waste_detected": true,
           "foam_detected": true,
           "discoloration_detected": true,
           "bank_degradation_detected": true,
-          "confidence_score": 0.96
+          "confidence_score": 0.94
         },
-        "notes": "Heavy chemical foam and industrial runoff visible under Sitabuldi bridge"
+        "notes": "Field observation for segment S017"
       }
     ],
     "evidence_agreement": "High Agreement",
-    "recommended_action": "Immediate emergency inspection & physical containment barrier deployment.",
+    "recommended_action": "Priority field investigation.",
     "last_updated": "2026-08-17T12:45:00Z"
   },
   {
-    "segment_id": "nag-seg-005",
-    "name": "Sitabuldi Bridge to Mokshdham",
-    "length_km": 2.9,
-    "centroid": [21.1440, 79.0980],
-    "investigation_priority_score": 58,
-    "priority_level": "High",
-    "satellite_metrics": {
-      "ndwi": 0.18,
-      "mndwi": 0.15,
-      "ndti": 0.38,
-      "ndvi": 0.25,
-      "temporal_change_percent": 8.2,
-      "satellite_score": 52,
-      "cloud_cover_percent": 0.8,
-      "acquisition_date": "2026-08-16"
-    },
-    "ground_evidence": [
-      {
-        "id": "ev-003",
-        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 11_19_18 PM.png",
-        "uploaded_at": "2026-08-17T10:45:00Z",
-        "ground_score": 64,
-        "ai_analysis": {
-          "waste_detected": true,
-          "foam_detected": false,
-          "discoloration_detected": true,
-          "bank_degradation_detected": false,
-          "confidence_score": 0.91
-        },
-        "notes": "Sewage discharge outfall pipe active"
-      }
+    "segment_id": "S018",
+    "name": "Nag River Segment S018",
+    "length_km": 0.34,
+    "centroid": [
+      21.13953,
+      79.11647
     ],
-    "evidence_agreement": "High Agreement",
-    "recommended_action": "Inspect storm drain outfalls and log sewage discharge source.",
-    "last_updated": "2026-08-17T11:00:00Z"
-  },
-  {
-    "segment_id": "nag-seg-006",
-    "name": "Mokshdham to Pardi Confluence",
-    "length_km": 4.5,
-    "centroid": [21.1480, 79.1150],
-    "investigation_priority_score": 42,
-    "priority_level": "Moderate",
+    "priority_score": 83,
+    "priority_level": "Critical",
     "satellite_metrics": {
-      "ndwi": 0.25,
-      "mndwi": 0.30,
-      "ndti": 0.22,
-      "ndvi": 0.40,
-      "temporal_change_percent": 3.1,
-      "satellite_score": 42,
-      "cloud_cover_percent": 1.5,
+      "ndwi": 0.01,
+      "mndwi": 0.08,
+      "ndti": 0.16,
+      "ndvi": 0.54,
+      "temporal_change_percent": 8.4,
+      "satellite_score": 83,
+      "cloud_cover_percent": 1.0,
       "acquisition_date": "2026-08-16"
     },
     "ground_evidence": [],
     "evidence_agreement": "Satellite Only",
-    "recommended_action": "Schedule bi-weekly monitoring pass.",
-    "last_updated": "2026-08-17T07:30:00Z"
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S019",
+    "name": "Nag River Segment S019",
+    "length_km": 0.33,
+    "centroid": [
+      21.14025,
+      79.11914
+    ],
+    "priority_score": 87,
+    "priority_level": "Critical",
+    "satellite_metrics": {
+      "ndwi": -0.01,
+      "mndwi": 0.06,
+      "ndti": 0.2,
+      "ndvi": 0.51,
+      "temporal_change_percent": 9.9,
+      "satellite_score": 87,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [],
+    "evidence_agreement": "Satellite Only",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
+  },
+  {
+    "segment_id": "S020",
+    "name": "Nag River Segment S020",
+    "length_km": 0.68,
+    "centroid": [
+      21.14127,
+      79.12377
+    ],
+    "priority_score": 91,
+    "priority_level": "Critical",
+    "satellite_metrics": {
+      "ndwi": -0.03,
+      "mndwi": 0.04,
+      "ndti": 0.24,
+      "ndvi": 0.48,
+      "temporal_change_percent": 11.4,
+      "satellite_score": 91,
+      "cloud_cover_percent": 1.0,
+      "acquisition_date": "2026-08-16"
+    },
+    "ground_evidence": [
+      {
+        "id": "ev-S020-01",
+        "photo_url": "/assests/ChatGPT Image Aug 15, 2026, 08_09_01 PM.png",
+        "uploaded_at": "2026-08-17T12:30:00Z",
+        "ground_score": 96,
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.94
+        },
+        "notes": "Field observation for segment S020"
+      }
+    ],
+    "evidence_agreement": "High Agreement",
+    "recommended_action": "Priority field investigation.",
+    "last_updated": "2026-08-17T12:45:00Z"
   }
 ]
