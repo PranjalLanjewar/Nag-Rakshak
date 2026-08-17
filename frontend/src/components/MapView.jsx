@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import geoData from '../../../data/geojson/nag_river_segments.geojson';
+import geoData from '../../../data/geojson/nag_river_segments.json';
 
 // Custom Map Marker Pin for Ground Photos
 const photoIcon = new L.Icon({
