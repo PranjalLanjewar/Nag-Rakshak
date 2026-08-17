@@ -25,7 +25,7 @@ function getPriorityColor(level) {
 
 export default function MapView({ segments, selectedSegmentId, onSelectSegment }) {
   // Center map on Nag River, Nagpur (approx [21.138, 79.080])
-  const nagpurCenter = [21.138, 79.080];
+  const nagpurCenter = [21.142, 79.095];
 
   const styleGeoJson = (feature) => {
     const matched = segments.find(s => s.segment_id === feature.properties.segment_id);
