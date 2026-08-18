@@ -4,6 +4,7 @@ import MapView from './components/MapView';
 import SegmentDetails from './components/SegmentDetails';
 import PhotoUploader from './components/PhotoUploader';
 import { fetchSegments, fetchSegmentDetails, syncSatelliteData } from './services/api';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function App() {
   const [segments, setSegments] = useState([]);
@@ -13,6 +14,8 @@ export default function App() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
+  const [theme, setTheme] = useState('dark');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Load all segments on mount and when mockMode is toggled
   useEffect(() => {
@@ -59,7 +62,7 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-dark-900 overflow-hidden">
+    <div className={`h-screen w-screen flex flex-col bg-dark-900 overflow-hidden ${theme === 'light' ? 'light' : 'dark'}`}>
       {/* Top Navbar */}
       <Navbar
         mockMode={mockMode}
@@ -67,25 +70,46 @@ export default function App() {
         onOpenUpload={() => setIsUploadOpen(true)}
         syncing={syncing}
         onSync={handleSync}
+        theme={theme}
+        onChangeTheme={setTheme}
       />
 
       {/* Main Split Layout */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left: Leaflet Hotspot Map */}
-        <div className="flex-1 h-full relative">
+      <div className="flex-1 flex overflow-hidden relative">
+        {/* Left: Leaflet Hotspot Map (takes full screen) */}
+        <div className="w-full h-full relative z-10">
           <MapView
+            theme={theme}
             segments={segments}
             selectedSegmentId={selectedSegmentId}
             onSelectSegment={handleSelectSegment}
           />
         </div>
 
-        {/* Right: Segment Evidence & Analysis Sidebar */}
-        <div className="w-[420px] h-full">
-          <SegmentDetails
-            segment={selectedDetails}
-            onOpenUpload={() => setIsUploadOpen(true)}
-          />
+        {/* Collapsible Sidebar Button */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className={`absolute top-1/2 -translate-y-1/2 z-40 w-6 h-16 bg-dark-800 border border-dark-700 hover:bg-dark-700 rounded-l-xl transition-all duration-300 flex items-center justify-center text-gray-300 hover:text-white shadow-2xl ${
+            isSidebarOpen ? 'right-[420px]' : 'right-0'
+          }`}
+          style={{ borderRight: 'none' }}
+        >
+          {isSidebarOpen ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+        </button>
+
+        {/* Right: Segment Evidence & Analysis Sidebar (overlay on top of map) */}
+        <div
+          className={`absolute top-0 right-0 h-full transition-all duration-300 overflow-hidden z-30 ${
+            isSidebarOpen ? 'w-[420px]' : 'w-0'
+          }`}
+        >
+          <div className="w-[420px] h-full">
+            <SegmentDetails
+              theme={theme}
+              segment={selectedDetails}
+              onOpenUpload={() => setIsUploadOpen(true)}
+            />
+          </div>
         </div>
       </div>
 

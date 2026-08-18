@@ -1,7 +1,7 @@
 import React from 'react';
-import { Waves, ShieldAlert, Database, Camera, RefreshCw } from 'lucide-react';
+import { Waves, Camera, RefreshCw, Sun, Moon } from 'lucide-react';
 
-export default function Navbar({ mockMode, onToggleMock, onOpenUpload, syncing, onSync }) {
+export default function Navbar({ mockMode, onToggleMock, onOpenUpload, syncing, onSync, theme, onChangeTheme }) {
   return (
     <header className="bg-dark-800 border-b border-dark-700 px-6 py-3 flex items-center justify-between z-30 relative shadow-lg">
       <div className="flex items-center space-x-3">
@@ -11,9 +11,6 @@ export default function Navbar({ mockMode, onToggleMock, onOpenUpload, syncing, 
         <div>
           <h1 className="text-lg font-bold text-white tracking-wide flex items-center gap-2">
             NagRiver Sentinel
-            <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono">
-              MVP v1.0
-            </span>
           </h1>
           <p className="text-xs text-gray-400">Sentinel-2 & Vision AI Hotspot Screening Platform</p>
         </div>
@@ -39,20 +36,16 @@ export default function Navbar({ mockMode, onToggleMock, onOpenUpload, syncing, 
           <span>Upload Ground Photo</span>
         </button>
 
-        {/* Mock Mode Toggle Badge */}
-        <div className="flex items-center space-x-2 bg-dark-700/80 px-3 py-1.5 rounded-lg border border-dark-600">
-          <Database className="w-3.5 h-3.5 text-amber-400" />
-          <span className="text-xs text-gray-300 font-mono">MOCK_MODE</span>
-          <button
-            onClick={onToggleMock}
-            className={`text-xs px-2 py-0.5 rounded font-bold transition-colors ${
-              mockMode ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-green-500/20 text-green-300 border border-green-500/40'
-            }`}
-          >
-            {mockMode ? 'ACTIVE' : 'LIVE'}
-          </button>
-        </div>
+        {/* Theme Switcher Button */}
+        <button
+          onClick={() => onChangeTheme(theme === 'light' ? 'dark' : 'light')}
+          className="flex items-center justify-center p-2 bg-dark-750 hover:bg-dark-700 border border-dark-600 text-gray-300 hover:text-white rounded-lg transition-all"
+          title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
+        >
+          {theme === 'light' ? <Moon className="w-4 h-4 text-amber-500" /> : <Sun className="w-4 h-4 text-amber-400" />}
+        </button>
       </div>
     </header>
   );
 }
+
