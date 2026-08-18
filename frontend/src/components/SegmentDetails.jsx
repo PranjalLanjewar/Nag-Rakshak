@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Satellite, Eye, AlertTriangle, CheckCircle2, ShieldCheck, FileText, Camera } from 'lucide-react';
 
 function getPriorityBadgeClass(level) {
@@ -11,7 +11,9 @@ function getPriorityBadgeClass(level) {
   }
 }
 
-export default function SegmentDetails({ segment, onOpenUpload }) {
+export default function SegmentDetails({ theme, segment, onOpenUpload }) {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   if (!segment) {
     return (
       <div className="h-full bg-dark-800 p-6 flex flex-col items-center justify-center text-center text-gray-400">
@@ -107,7 +109,7 @@ export default function SegmentDetails({ segment, onOpenUpload }) {
         </div>
 
         {segment.historical_data && segment.historical_data.length > 0 ? (
-          <div className="bg-dark-900 p-4 rounded-xl border border-dark-700 space-y-3">
+          <div className="bg-dark-900 p-4 rounded-xl border border-dark-700 space-y-3 relative">
             {/* Chart Legend */}
             <div className="flex justify-between items-center text-[10px] text-gray-400 font-semibold px-1">
               <div className="flex items-center space-x-1.5">
@@ -127,15 +129,30 @@ export default function SegmentDetails({ segment, onOpenUpload }) {
             {/* Custom SVG Line Chart */}
             <div className="relative">
               <svg viewBox="0 0 340 150" className="w-full h-36 overflow-visible">
+                <defs>
+                  <linearGradient id="ndwi-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.2"/>
+                    <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.0"/>
+                  </linearGradient>
+                  <linearGradient id="ndti-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.2"/>
+                    <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.0"/>
+                  </linearGradient>
+                  <linearGradient id="ndvi-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#10B981" stopOpacity="0.2"/>
+                    <stop offset="100%" stopColor="#10B981" stopOpacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
                 {/* Horizontal Gridlines */}
-                <line x1="35" y1="20" x2="330" y2="20" stroke="#374151" strokeWidth="1" strokeDasharray="3 3" />
-                <line x1="35" y1="70" x2="330" y2="70" stroke="#374151" strokeWidth="1" strokeDasharray="3 3" />
-                <line x1="35" y1="120" x2="330" y2="120" stroke="#374151" strokeWidth="1" />
+                <line x1="35" y1="20" x2="330" y2="20" stroke={theme === 'light' ? '#e2e8f0' : '#374151'} strokeWidth="1" strokeDasharray="3 3" />
+                <line x1="35" y1="70" x2="330" y2="70" stroke={theme === 'light' ? '#e2e8f0' : '#374151'} strokeWidth="1" strokeDasharray="3 3" />
+                <line x1="35" y1="120" x2="330" y2="120" stroke={theme === 'light' ? '#e2e8f0' : '#374151'} strokeWidth="1" />
 
                 {/* Y-Axis Labels */}
-                <text x="5" y="24" fill="#9CA3AF" fontSize="10" className="font-mono">0.8</text>
-                <text x="5" y="74" fill="#9CA3AF" fontSize="10" className="font-mono">0.3</text>
-                <text x="5" y="124" fill="#9CA3AF" fontSize="10" className="font-mono">-0.2</text>
+                <text x="5" y="24" fill={theme === 'light' ? '#475569' : '#9CA3AF'} fontSize="10" className="font-mono">0.8</text>
+                <text x="5" y="74" fill={theme === 'light' ? '#475569' : '#9CA3AF'} fontSize="10" className="font-mono">0.3</text>
+                <text x="5" y="124" fill={theme === 'light' ? '#475569' : '#9CA3AF'} fontSize="10" className="font-mono">-0.2</text>
 
                 {/* Helper variables for coordinates */}
                 {(() => {
@@ -143,35 +160,86 @@ export default function SegmentDetails({ segment, onOpenUpload }) {
                   const getX = (idx) => 35 + (idx / 5) * 285;
                   const getY = (val) => 120 - ((val - (-0.2)) / 1.0) * 100;
 
-                  // Render paths
-                  const ndwiPts = history.map((pt, i) => `${getX(i)},${getY(pt.ndwi)}`).join(' L ');
-                  const ndtiPts = history.map((pt, i) => `${getX(i)},${getY(pt.ndti)}`).join(' L ');
-                  const ndviPts = history.map((pt, i) => `${getX(i)},${getY(pt.ndvi)}`).join(' L ');
+                  const ndwiPts = history.map((pt, i) => ({ x: getX(i), y: getY(pt.ndwi) }));
+                  const ndtiPts = history.map((pt, i) => ({ x: getX(i), y: getY(pt.ndti) }));
+                  const ndviPts = history.map((pt, i) => ({ x: getX(i), y: getY(pt.ndvi) }));
+
+                  const getBezierPath = (points) => {
+                    if (points.length === 0) return '';
+                    let path = `M ${points[0].x} ${points[0].y}`;
+                    for (let i = 0; i < points.length - 1; i++) {
+                      const p0 = points[i];
+                      const p1 = points[i+1];
+                      const cp1x = p0.x + (p1.x - p0.x) / 3;
+                      const cp1y = p0.y;
+                      const cp2x = p0.x + 2 * (p1.x - p0.x) / 3;
+                      const cp2y = p1.y;
+                      path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p1.x} ${p1.y}`;
+                    }
+                    return path;
+                  };
+
+                  const getBezierAreaPath = (points, baselineY) => {
+                    if (points.length === 0) return '';
+                    const linePath = getBezierPath(points);
+                    return `${linePath} L ${points[points.length - 1].x} ${baselineY} L ${points[0].x} ${baselineY} Z`;
+                  };
+
+                  const dotStroke = theme === 'light' ? '#FFFFFF' : '#0F172A';
 
                   return (
                     <>
-                      {/* Lines */}
-                      {ndwiPts && <path d={`M ${ndwiPts}`} fill="none" stroke="#22D3EE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
-                      {ndtiPts && <path d={`M ${ndtiPts}`} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
-                      {ndviPts && <path d={`M ${ndviPts}`} fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
+                      {/* Area Gradients */}
+                      {ndwiPts.length > 0 && <path d={getBezierAreaPath(ndwiPts, 120)} fill="url(#ndwi-grad)" className="chart-area" />}
+                      {ndtiPts.length > 0 && <path d={getBezierAreaPath(ndtiPts, 120)} fill="url(#ndti-grad)" className="chart-area" />}
+                      {ndviPts.length > 0 && <path d={getBezierAreaPath(ndviPts, 120)} fill="url(#ndvi-grad)" className="chart-area" />}
 
-                      {/* Interactive Circles & Labels */}
+                      {/* Smooth lines */}
+                      {ndwiPts.length > 0 && <path d={getBezierPath(ndwiPts)} fill="none" stroke="#22D3EE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="chart-path" />}
+                      {ndtiPts.length > 0 && <path d={getBezierPath(ndtiPts)} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="chart-path" />}
+                      {ndviPts.length > 0 && <path d={getBezierPath(ndviPts)} fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="chart-path" />}
+
+                      {/* Hover Vertical Guide Line */}
+                      {hoveredIndex !== null && (
+                        <line x1={getX(hoveredIndex)} y1={10} x2={getX(hoveredIndex)} y2={120} stroke={theme === 'light' ? '#cbd5e1' : '#4b5563'} strokeWidth="1.5" strokeDasharray="3 3" pointerEvents="none" />
+                      )}
+
+                      {/* Data nodes */}
                       {history.map((pt, i) => {
                         const x = getX(i);
                         const month = new Date(pt.acquisition_date).toLocaleDateString('en-US', { month: 'short' });
+                        const isHovered = hoveredIndex === i;
                         
                         return (
                           <g key={`nodes-${i}`}>
                             {/* X-Axis labels */}
-                            <text x={x} y="142" fill="#9CA3AF" fontSize="10" textAnchor="middle" className="font-mono">
+                            <text x={x} y="142" fill={theme === 'light' ? '#475569' : '#9CA3AF'} fontSize="10" textAnchor="middle" className="font-mono">
                               {month}
                             </text>
                             
                             {/* Data points */}
-                            <circle cx={x} cy={getY(pt.ndwi)} r="3.5" fill="#22D3EE" stroke="#0F172A" strokeWidth="1" />
-                            <circle cx={x} cy={getY(pt.ndti)} r="3.5" fill="#F59E0B" stroke="#0F172A" strokeWidth="1" />
-                            <circle cx={x} cy={getY(pt.ndvi)} r="3.5" fill="#10B981" stroke="#0F172A" strokeWidth="1" />
+                            <circle cx={x} cy={getY(pt.ndwi)} r={isHovered ? 5.5 : 3.5} fill="#22D3EE" stroke={dotStroke} strokeWidth={isHovered ? 2 : 1} className="transition-all duration-150" />
+                            <circle cx={x} cy={getY(pt.ndti)} r={isHovered ? 5.5 : 3.5} fill="#F59E0B" stroke={dotStroke} strokeWidth={isHovered ? 2 : 1} className="transition-all duration-150" />
+                            <circle cx={x} cy={getY(pt.ndvi)} r={isHovered ? 5.5 : 3.5} fill="#10B981" stroke={dotStroke} strokeWidth={isHovered ? 2 : 1} className="transition-all duration-150" />
                           </g>
+                        );
+                      })}
+
+                      {/* Hover Zones */}
+                      {history.map((pt, i) => {
+                        const x = getX(i);
+                        return (
+                          <rect
+                            key={`hover-zone-${i}`}
+                            x={x - 15}
+                            y={10}
+                            width={30}
+                            height={120}
+                            fill="transparent"
+                            className="cursor-pointer"
+                            onMouseEnter={() => setHoveredIndex(i)}
+                            onMouseLeave={() => setHoveredIndex(null)}
+                          />
                         );
                       })}
                     </>
@@ -179,6 +247,27 @@ export default function SegmentDetails({ segment, onOpenUpload }) {
                 })()}
               </svg>
             </div>
+
+            {/* Interactive Tooltip Overlay */}
+            {hoveredIndex !== null && segment.historical_data && segment.historical_data[hoveredIndex] && (
+              <div className="absolute top-10 left-1/2 -translate-x-1/2 z-30 bg-dark-800/95 backdrop-blur border border-dark-700 p-2.5 rounded-lg shadow-xl text-[11px] pointer-events-none flex flex-col gap-1 min-w-[150px]">
+                <span className="font-bold text-center border-b border-dark-700 pb-1 mb-1 text-gray-400 font-mono">
+                  {new Date(segment.historical_data[hoveredIndex].acquisition_date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                </span>
+                <div className="flex justify-between gap-4">
+                  <span className="text-cyan-400 font-semibold">NDWI (Water):</span>
+                  <span className="font-mono text-white">{segment.historical_data[hoveredIndex].ndwi.toFixed(3)}</span>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <span className="text-amber-400 font-semibold">NDTI (Turbidity):</span>
+                  <span className="font-mono text-white">{segment.historical_data[hoveredIndex].ndti.toFixed(3)}</span>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <span className="text-emerald-400 font-semibold">NDVI (Algae):</span>
+                  <span className="font-mono text-white">{segment.historical_data[hoveredIndex].ndvi.toFixed(3)}</span>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="bg-dark-900/60 p-4 rounded-xl border border-dark-700 text-center text-xs text-gray-400">

@@ -33,3 +33,114 @@ body {
   border: 1px solid #334155;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
+
+/* Theme Transition rules */
+header, div, button, span, h1, h2, h3, h4, p, label, select, textarea, input {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme Overrides */
+.light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light .bg-dark-900 {
+  background-color: #f1f5f9 !important;
+}
+
+.light .bg-dark-800 {
+  background-color: #ffffff !important;
+}
+
+.light .bg-dark-750 {
+  background-color: #f8fafc !important;
+}
+
+.light .bg-dark-700 {
+  background-color: #e2e8f0 !important;
+}
+
+.light .bg-dark-600 {
+  background-color: #cbd5e1 !important;
+}
+
+.light .border-dark-700 {
+  border-color: #e2e8f0 !important;
+}
+
+.light .border-dark-600 {
+  border-color: #cbd5e1 !important;
+}
+
+.light .text-white {
+  color: #0f172a !important;
+}
+
+.light .text-gray-100 {
+  color: #0f172a !important;
+}
+
+.light .text-gray-200 {
+  color: #1e293b !important;
+}
+
+.light .text-gray-300 {
+  color: #334155 !important;
+}
+
+.light .text-gray-400 {
+  color: #64748b !important;
+}
+
+.light .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+/* Scrollbars in light theme */
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Leaflet light theme overrides */
+.light .leaflet-container {
+  background-color: #f8fafc !important;
+}
+
+.light .leaflet-popup-content-wrapper, .light .leaflet-popup-tip {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* SVG Line Chart Animations & Curve styling */
+.chart-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.chart-area {
+  opacity: 0;
+  animation: fadeInArea 1s ease-out 1.2s forwards;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInArea {
+  to {
+    opacity: 1;
+  }
+}
+

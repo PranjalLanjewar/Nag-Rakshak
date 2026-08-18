@@ -23,7 +23,7 @@ function getPriorityColor(level) {
   }
 }
 
-export default function MapView({ segments, selectedSegmentId, onSelectSegment }) {
+export default function MapView({ theme, segments, selectedSegmentId, onSelectSegment }) {
   // Center map on Nag River, Nagpur (approx [21.138, 79.080])
   const nagpurCenter = [21.142, 79.095];
 
@@ -48,6 +48,10 @@ export default function MapView({ segments, selectedSegmentId, onSelectSegment }
     });
   };
 
+  const tileUrl = theme === 'light'
+    ? 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+
   return (
     <div className="w-full h-full relative">
       <MapContainer
@@ -58,7 +62,7 @@ export default function MapView({ segments, selectedSegmentId, onSelectSegment }
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url={tileUrl}
         />
 
         <GeoJSON
@@ -105,19 +109,19 @@ export default function MapView({ segments, selectedSegmentId, onSelectSegment }
         <div className="grid grid-cols-2 gap-2 text-xs">
           <div className="flex items-center space-x-2">
             <span className="w-3 h-3 rounded-full bg-priority-low"></span>
-            <span className="text-gray-300">🟢 Low (0-25)</span>
+            <span className="text-gray-300">Low (0-25)</span>
           </div>
           <div className="flex items-center space-x-2">
             <span className="w-3 h-3 rounded-full bg-priority-moderate"></span>
-            <span className="text-gray-300">🟡 Moderate (26-50)</span>
+            <span className="text-gray-300">Moderate (26-50)</span>
           </div>
           <div className="flex items-center space-x-2">
             <span className="w-3 h-3 rounded-full bg-priority-high"></span>
-            <span className="text-gray-300">🟠 High (51-75)</span>
+            <span className="text-gray-300">High (51-75)</span>
           </div>
           <div className="flex items-center space-x-2">
             <span className="w-3 h-3 rounded-full bg-priority-critical"></span>
-            <span className="text-gray-300">🔴 Critical (76-100)</span>
+            <span className="text-gray-300">Critical (76-100)</span>
           </div>
         </div>
       </div>
