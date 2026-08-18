@@ -76,8 +76,8 @@ export default function App() {
 
       {/* Main Split Layout */}
       <div className="flex-1 flex overflow-hidden relative">
-        {/* Left: Leaflet Hotspot Map */}
-        <div className="flex-1 h-full relative">
+        {/* Left: Leaflet Hotspot Map (takes full screen) */}
+        <div className="w-full h-full relative z-10">
           <MapView
             theme={theme}
             segments={segments}
@@ -89,7 +89,7 @@ export default function App() {
         {/* Collapsible Sidebar Button */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className={`absolute top-1/2 -translate-y-1/2 z-[999] w-6 h-16 bg-dark-800 border border-dark-700 hover:bg-dark-700 rounded-l-xl transition-all duration-300 flex items-center justify-center text-gray-300 hover:text-white shadow-2xl ${
+          className={`absolute top-1/2 -translate-y-1/2 z-40 w-6 h-16 bg-dark-800 border border-dark-700 hover:bg-dark-700 rounded-l-xl transition-all duration-300 flex items-center justify-center text-gray-300 hover:text-white shadow-2xl ${
             isSidebarOpen ? 'right-[420px]' : 'right-0'
           }`}
           style={{ borderRight: 'none' }}
@@ -97,10 +97,10 @@ export default function App() {
           {isSidebarOpen ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
         </button>
 
-        {/* Right: Segment Evidence & Analysis Sidebar */}
+        {/* Right: Segment Evidence & Analysis Sidebar (overlay on top of map) */}
         <div
-          className={`h-full border-l border-dark-700 transition-all duration-300 overflow-hidden ${
-            isSidebarOpen ? 'w-[420px]' : 'w-0 border-l-0'
+          className={`absolute top-0 right-0 h-full transition-all duration-300 overflow-hidden z-30 ${
+            isSidebarOpen ? 'w-[420px]' : 'w-0'
           }`}
         >
           <div className="w-[420px] h-full">
