@@ -1,0 +1,127 @@
+[
+    {
+        "image": "img_1.jpg",
+        "latitude": 21.1370155,
+        "longitude": 79.0694487
+    },
+    {
+        "image": "img_2.jpg",
+        "latitude": 21.1371006,
+        "longitude": 79.0699879
+    },
+    {
+        "image": "img_3.jpg",
+        "latitude": 21.1371394,
+        "longitude": 79.0699631
+    },
+    {
+        "image": "img_4.jpg",
+        "latitude": 21.1371963,
+        "longitude": 79.0705330
+    },
+    {
+        "image": "img_5.jpg",
+        "latitude": 21.1373892,
+        "longitude": 79.0712126
+    },
+    {
+        "image": "img_6.jpg",
+        "latitude": 21.1375412,
+        "longitude": 79.0718828
+    },
+    {
+        "image": "img_7.jpg",
+        "latitude": 21.1376694,
+        "longitude": 79.0724917
+    },
+    {
+        "image": "img_8.jpg",
+        "latitude": 21.1377929,
+        "longitude": 79.0727200
+    },
+    {
+        "image": "img_9.jpg",
+        "latitude": 21.1379884,
+        "longitude": 79.0737922
+    },
+    {
+        "image": "img_10.jpg",
+        "latitude": 21.1380675,
+        "longitude": 79.0740849
+    },
+    {
+        "image": "img_11.jpg",
+        "latitude": 21.1381898,
+        "longitude": 79.0745869
+    },
+    {
+        "image": "img_12.jpg",
+        "latitude": 21.1382436,
+        "longitude": 79.0747304
+    },
+    {
+        "image": "img_13.jpg",
+        "latitude": 21.1384171,
+        "longitude": 79.0753556
+    },
+    {
+        "image": "img_14.jpg",
+        "latitude": 21.1385469,
+        "longitude": 79.0758405
+    },
+    {
+        "image": "img_15.jpg",
+        "latitude": 21.1386579,
+        "longitude": 79.0763611
+    },
+    {
+        "image": "img_16.jpg",
+        "latitude": 21.1388803,
+        "longitude": 79.0769294
+    },
+    {
+        "image": "img_17.jpg",
+        "latitude": 21.1389381,
+        "longitude": 79.0771886
+    },
+    {
+        "image": "img_18.jpg",
+        "latitude": 21.1392658,
+        "longitude": 79.0782280
+    },
+    {
+        "image": "img_19.jpg",
+        "latitude": 21.1393912,
+        "longitude": 79.0785538
+    },
+    {
+        "image": "img_20.jpg",
+        "latitude": 21.1405958,
+        "longitude": 79.0831981
+    },
+    {
+        "image": "img_21.jpg",
+        "latitude": 21.1405917,
+        "longitude": 79.0833399
+    },
+    {
+        "image": "img_22.jpg",
+        "latitude": 21.1404351,
+        "longitude": 79.0839813
+    },
+    {
+        "image": "img_23.jpg",
+        "latitude": 21.1402130,
+        "longitude": 79.0841975
+    },
+    {
+        "image": "img_24.jpg",
+        "latitude": 21.1395360,
+        "longitude": 79.0850713
+    },
+    {
+        "image": "img_25.jpg",
+        "latitude": 21.1389015,
+        "longitude": 79.0855122
+    }
+]

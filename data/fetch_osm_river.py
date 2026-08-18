@@ -114,64 +114,97 @@ def rebuild_continuous_line(osm_json):
             
     return ordered_coords
 
-def split_into_segments(coords, num_segments=20):
+def split_into_segments(coords, num_segments=25):
     if not coords:
         return []
-    
-    total_points = len(coords)
-    if total_points < num_segments:
-        # Interpolate points if too few coordinates exist
-        print("[OSM Client] Insufficient coordinates. Interpolating path...")
-        return []
         
-    pts_per_segment = total_points / num_segments
+    # Calculate cumulative distance along the LineString
+    def haversine_dist(p1, p2):
+        lon1, lat1 = p1
+        lon2, lat2 = p2
+        R = 6371.0 # km
+        dlat = math.radians(lat2 - lat1)
+        dlon = math.radians(lon2 - lon1)
+        a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon/2)**2
+        c = 2 * math.asin(math.sqrt(a))
+        return R * c
+
+    # Interpolate coordinates to handle long straight sections (like S007)
+    max_dist_km = 0.03 # 30 meters
+    interpolated = [coords[0]]
+    for idx in range(1, len(coords)):
+        p1 = coords[idx-1]
+        p2 = coords[idx]
+        d = haversine_dist(p1, p2)
+        if d > max_dist_km:
+            num_steps = int(math.ceil(d / max_dist_km))
+            for step in range(1, num_steps):
+                fraction = step / num_steps
+                interp_lon = p1[0] + (p2[0] - p1[0]) * fraction
+                interp_lat = p1[1] + (p2[1] - p1[1]) * fraction
+                interpolated.append((interp_lon, interp_lat))
+        interpolated.append(p2)
+        
+    coords = interpolated
+        
+    distances = [0.0]
+    for i in range(1, len(coords)):
+        d = haversine_dist(coords[i-1], coords[i])
+        distances.append(distances[-1] + d)
+        
+    total_len = distances[-1]
+    seg_len = total_len / num_segments
+    
     features = []
+    current_seg_idx = 0
+    seg_coords = [coords[0]]
     
-    for i in range(num_segments):
-        start_idx = int(i * pts_per_segment)
-        end_idx = int((i + 1) * pts_per_segment) + 1
-        
-        # Ensure slice bounds are safe
-        seg_coords = coords[start_idx:min(end_idx, total_points)]
-        if len(seg_coords) < 2:
-            continue
+    for i in range(1, len(coords)):
+        seg_coords.append(coords[i])
+        # If we reached or exceeded the segment boundary, or if it's the last coordinate
+        if distances[i] >= (current_seg_idx + 1) * seg_len or i == len(coords) - 1:
+            segment_id = f"S{current_seg_idx+1:03d}"
             
-        segment_id = f"S{i+1:03d}"
-        
-        # Calculate centroid [lat, lng]
-        lons = [c[0] for c in seg_coords]
-        lats = [c[1] for c in seg_coords]
-        centroid = [sum(lats) / len(lats), sum(lons) / len(lons)]
-        
-        # Approximate length in km
-        length_km = 0.0
-        for j in range(len(seg_coords) - 1):
-            length_km += math.dist(seg_coords[j], seg_coords[j+1]) * 111.0 # 1 deg ~ 111km
+            # Compute length and centroid
+            l_km = distances[i] - distances[i - len(seg_coords) + 1]
+            if l_km == 0:
+                l_km = haversine_dist(seg_coords[0], seg_coords[-1])
+            l_km = round(l_km, 2)
             
-        # Determine priority (balanced mock indicators)
-        priority_score = 15 + (i * 4) % 85
-        priority_level = 'Low'
-        if priority_score > 75: priority_level = 'Critical'
-        elif priority_score > 50: priority_level = 'High'
-        elif priority_score > 25: priority_level = 'Moderate'
-        
-        features.append({
-            "type": "Feature",
-            "properties": {
-                "segment_id": segment_id,
-                "name": f"Nag River Segment {segment_id}",
-                "length_km": round(length_km, 2),
-                "priority_score": priority_score,
-                "priority_level": priority_level,
-                "has_ground_data": (i % 3 == 1),
-                "centroid": [round(centroid[0], 5), round(centroid[1], 5)]
-            },
-            "geometry": {
-                "type": "LineString",
-                "coordinates": seg_coords
-            }
-        })
-        
+            centroid_lat = sum(pt[1] for pt in seg_coords) / len(seg_coords)
+            centroid_lon = sum(pt[0] for pt in seg_coords) / len(seg_coords)
+            
+            # Default properties
+            priority_score = 15 + (current_seg_idx * 3)
+            priority_level = 'Low'
+            if priority_score > 75: priority_level = 'Critical'
+            elif priority_score > 50: priority_level = 'High'
+            elif priority_score > 25: priority_level = 'Moderate'
+            
+            features.append({
+                "type": "Feature",
+                "properties": {
+                    "segment_id": segment_id,
+                    "name": f"Nag River Segment {segment_id}",
+                    "length_km": l_km,
+                    "priority_score": priority_score,
+                    "priority_level": priority_level,
+                    "has_ground_data": False,
+                    "centroid": [round(centroid_lat, 5), round(centroid_lon, 5)]
+                },
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": seg_coords
+                }
+            })
+            
+            current_seg_idx += 1
+            # Start next segment with the end point of the previous segment to keep the line continuous
+            seg_coords = [coords[i]]
+            
+            if current_seg_idx >= num_segments:
+                break
+                
     return features
 
 def main():
@@ -207,7 +240,7 @@ def main():
     print("[OSM Client] Saved source geometry to data/geojson/nag-river-source.geojson / .json")
     
     # Save split segmented version
-    segments = split_into_segments(coords, 20)
+    segments = split_into_segments(coords, 25)
     segments_geojson = {
         "type": "FeatureCollection",
         "name": "NagRiverSegments",

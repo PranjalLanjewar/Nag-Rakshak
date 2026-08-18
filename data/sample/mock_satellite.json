@@ -17,7 +17,7 @@
       "ndti": 0.12,
       "ndvi": 0.52,
       "temporal_change_percent": -0.6,
-      "satellite_score": 19
+      "satellite_score": 18
     },
     "S003": {
       "ndwi": 0.31,
@@ -25,7 +25,7 @@
       "ndti": 0.16,
       "ndvi": 0.49,
       "temporal_change_percent": 0.9,
-      "satellite_score": 23
+      "satellite_score": 21
     },
     "S004": {
       "ndwi": 0.29,
@@ -33,7 +33,7 @@
       "ndti": 0.2,
       "ndvi": 0.46,
       "temporal_change_percent": 2.4,
-      "satellite_score": 27
+      "satellite_score": 24
     },
     "S005": {
       "ndwi": 0.27,
@@ -41,7 +41,7 @@
       "ndti": 0.24,
       "ndvi": 0.43,
       "temporal_change_percent": 3.9,
-      "satellite_score": 31
+      "satellite_score": 27
     },
     "S006": {
       "ndwi": 0.25,
@@ -49,7 +49,7 @@
       "ndti": 0.28,
       "ndvi": 0.4,
       "temporal_change_percent": 5.4,
-      "satellite_score": 35
+      "satellite_score": 30
     },
     "S007": {
       "ndwi": 0.23,
@@ -57,7 +57,7 @@
       "ndti": 0.32,
       "ndvi": 0.37,
       "temporal_change_percent": 6.9,
-      "satellite_score": 39
+      "satellite_score": 33
     },
     "S008": {
       "ndwi": 0.21,
@@ -65,7 +65,7 @@
       "ndti": 0.36,
       "ndvi": 0.34,
       "temporal_change_percent": 8.4,
-      "satellite_score": 43
+      "satellite_score": 36
     },
     "S009": {
       "ndwi": 0.19,
@@ -73,7 +73,7 @@
       "ndti": 0.4,
       "ndvi": 0.31,
       "temporal_change_percent": 9.9,
-      "satellite_score": 47
+      "satellite_score": 39
     },
     "S010": {
       "ndwi": 0.17,
@@ -81,7 +81,7 @@
       "ndti": 0.44,
       "ndvi": 0.28,
       "temporal_change_percent": 11.4,
-      "satellite_score": 51
+      "satellite_score": 42
     },
     "S011": {
       "ndwi": 0.15,
@@ -89,7 +89,7 @@
       "ndti": 0.48,
       "ndvi": 0.25,
       "temporal_change_percent": -2.1,
-      "satellite_score": 55
+      "satellite_score": 45
     },
     "S012": {
       "ndwi": 0.13,
@@ -97,7 +97,7 @@
       "ndti": 0.52,
       "ndvi": 0.22,
       "temporal_change_percent": -0.6,
-      "satellite_score": 59
+      "satellite_score": 48
     },
     "S013": {
       "ndwi": 0.11,
@@ -105,7 +105,7 @@
       "ndti": 0.56,
       "ndvi": 0.19,
       "temporal_change_percent": 0.9,
-      "satellite_score": 63
+      "satellite_score": 51
     },
     "S014": {
       "ndwi": 0.09,
@@ -113,7 +113,7 @@
       "ndti": 0.6,
       "ndvi": 0.16,
       "temporal_change_percent": 2.4,
-      "satellite_score": 67
+      "satellite_score": 54
     },
     "S015": {
       "ndwi": 0.07,
@@ -121,7 +121,7 @@
       "ndti": 0.64,
       "ndvi": 0.13,
       "temporal_change_percent": 3.9,
-      "satellite_score": 71
+      "satellite_score": 57
     },
     "S016": {
       "ndwi": 0.05,
@@ -129,7 +129,7 @@
       "ndti": 0.08,
       "ndvi": 0.1,
       "temporal_change_percent": 5.4,
-      "satellite_score": 75
+      "satellite_score": 60
     },
     "S017": {
       "ndwi": 0.03,
@@ -137,7 +137,7 @@
       "ndti": 0.12,
       "ndvi": 0.07,
       "temporal_change_percent": 6.9,
-      "satellite_score": 79
+      "satellite_score": 63
     },
     "S018": {
       "ndwi": 0.01,
@@ -145,7 +145,7 @@
       "ndti": 0.16,
       "ndvi": 0.54,
       "temporal_change_percent": 8.4,
-      "satellite_score": 83
+      "satellite_score": 66
     },
     "S019": {
       "ndwi": -0.01,
@@ -153,7 +153,7 @@
       "ndti": 0.2,
       "ndvi": 0.51,
       "temporal_change_percent": 9.9,
-      "satellite_score": 87
+      "satellite_score": 69
     },
     "S020": {
       "ndwi": -0.03,
@@ -161,7 +161,47 @@
       "ndti": 0.24,
       "ndvi": 0.48,
       "temporal_change_percent": 11.4,
-      "satellite_score": 91
+      "satellite_score": 72
+    },
+    "S021": {
+      "ndwi": 0.35,
+      "mndwi": 0.42,
+      "ndti": 0.28,
+      "ndvi": 0.45,
+      "temporal_change_percent": -2.1,
+      "satellite_score": 75
+    },
+    "S022": {
+      "ndwi": 0.33,
+      "mndwi": 0.4,
+      "ndti": 0.32,
+      "ndvi": 0.42,
+      "temporal_change_percent": -0.6,
+      "satellite_score": 78
+    },
+    "S023": {
+      "ndwi": 0.31,
+      "mndwi": 0.38,
+      "ndti": 0.36,
+      "ndvi": 0.39,
+      "temporal_change_percent": 0.9,
+      "satellite_score": 81
+    },
+    "S024": {
+      "ndwi": 0.29,
+      "mndwi": 0.36,
+      "ndti": 0.4,
+      "ndvi": 0.36,
+      "temporal_change_percent": 2.4,
+      "satellite_score": 84
+    },
+    "S025": {
+      "ndwi": 0.27,
+      "mndwi": 0.34,
+      "ndti": 0.44,
+      "ndvi": 0.33,
+      "temporal_change_percent": 3.9,
+      "satellite_score": 87
     }
   }
 }
