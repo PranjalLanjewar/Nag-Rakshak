@@ -6,7 +6,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S001",
-        "name": "Nag River Segment S001",
+        "name": "Nag River - Ambazari Outlet Part 1",
         "length_km": 0.42,
         "priority_score": 15,
         "priority_level": "Low",
@@ -102,7 +102,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S002",
-        "name": "Nag River Segment S002",
+        "name": "Nag River - Ambazari Outlet Part 2",
         "length_km": 0.38,
         "priority_score": 18,
         "priority_level": "Low",
@@ -182,7 +182,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S003",
-        "name": "Nag River Segment S003",
+        "name": "Nag River - Ambazari Layout",
         "length_km": 0.4,
         "priority_score": 21,
         "priority_level": "Low",
@@ -274,7 +274,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S004",
-        "name": "Nag River Segment S004",
+        "name": "Nag River - Dharampeth Part 1",
         "length_km": 0.41,
         "priority_score": 24,
         "priority_level": "Low",
@@ -362,7 +362,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S005",
-        "name": "Nag River Segment S005",
+        "name": "Nag River - Dharampeth Part 2",
         "length_km": 0.39,
         "priority_score": 27,
         "priority_level": "Moderate",
@@ -446,7 +446,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S006",
-        "name": "Nag River Segment S006",
+        "name": "Nag River - Ramdaspeth Part 1",
         "length_km": 0.38,
         "priority_score": 30,
         "priority_level": "Moderate",
@@ -534,7 +534,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S007",
-        "name": "Nag River Segment S007",
+        "name": "Nag River - Ramdaspeth Part 2",
         "length_km": 0.4,
         "priority_score": 33,
         "priority_level": "Moderate",
@@ -618,7 +618,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S008",
-        "name": "Nag River Segment S008",
+        "name": "Nag River - Dhantoli Part 1",
         "length_km": 0.39,
         "priority_score": 36,
         "priority_level": "Moderate",
@@ -694,7 +694,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S009",
-        "name": "Nag River Segment S009",
+        "name": "Nag River - Dhantoli Part 2",
         "length_km": 0.42,
         "priority_score": 39,
         "priority_level": "Moderate",
@@ -774,7 +774,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S010",
-        "name": "Nag River Segment S010",
+        "name": "Nag River - Baidyanath Chowk Part 1",
         "length_km": 0.39,
         "priority_score": 42,
         "priority_level": "Moderate",
@@ -850,7 +850,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S011",
-        "name": "Nag River Segment S011",
+        "name": "Nag River - Baidyanath Chowk Part 2",
         "length_km": 0.39,
         "priority_score": 45,
         "priority_level": "Moderate",
@@ -926,7 +926,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S012",
-        "name": "Nag River Segment S012",
+        "name": "Nag River - Great Nag Road Part 1",
         "length_km": 0.39,
         "priority_score": 48,
         "priority_level": "Moderate",
@@ -1002,7 +1002,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S013",
-        "name": "Nag River Segment S013",
+        "name": "Nag River - Great Nag Road Part 2",
         "length_km": 0.41,
         "priority_score": 51,
         "priority_level": "High",
@@ -1086,7 +1086,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S014",
-        "name": "Nag River Segment S014",
+        "name": "Nag River - Great Nag Road Part 3",
         "length_km": 0.39,
         "priority_score": 54,
         "priority_level": "High",
@@ -1174,7 +1174,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S015",
-        "name": "Nag River Segment S015",
+        "name": "Nag River - Reshimbagh Part 1",
         "length_km": 0.39,
         "priority_score": 57,
         "priority_level": "High",
@@ -1258,7 +1258,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S016",
-        "name": "Nag River Segment S016",
+        "name": "Nag River - Reshimbagh Part 2",
         "length_km": 0.41,
         "priority_score": 60,
         "priority_level": "High",
@@ -1350,7 +1350,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S017",
-        "name": "Nag River Segment S017",
+        "name": "Nag River - Ashok Nagar Part 1",
         "length_km": 0.41,
         "priority_score": 63,
         "priority_level": "High",
@@ -1438,7 +1438,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S018",
-        "name": "Nag River Segment S018",
+        "name": "Nag River - Ashok Nagar Part 2",
         "length_km": 0.37,
         "priority_score": 66,
         "priority_level": "High",
@@ -1522,7 +1522,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S019",
-        "name": "Nag River Segment S019",
+        "name": "Nag River - Pardi Part 1",
         "length_km": 0.4,
         "priority_score": 69,
         "priority_level": "High",
@@ -1610,7 +1610,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S020",
-        "name": "Nag River Segment S020",
+        "name": "Nag River - Pardi Part 2",
         "length_km": 0.42,
         "priority_score": 72,
         "priority_level": "High",
@@ -1698,7 +1698,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S021",
-        "name": "Nag River Segment S021",
+        "name": "Nag River - Pardi Part 3",
         "length_km": 0.38,
         "priority_score": 75,
         "priority_level": "High",
@@ -1782,7 +1782,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S022",
-        "name": "Nag River Segment S022",
+        "name": "Nag River - Pardi Part 4",
         "length_km": 0.39,
         "priority_score": 78,
         "priority_level": "Critical",
@@ -1870,7 +1870,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S023",
-        "name": "Nag River Segment S023",
+        "name": "Nag River - Bhandara Road Part 1",
         "length_km": 0.41,
         "priority_score": 81,
         "priority_level": "Critical",
@@ -1966,7 +1966,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S024",
-        "name": "Nag River Segment S024",
+        "name": "Nag River - Bhandara Road Part 2",
         "length_km": 0.4,
         "priority_score": 84,
         "priority_level": "Critical",
@@ -2050,7 +2050,7 @@
       "type": "Feature",
       "properties": {
         "segment_id": "S025",
-        "name": "Nag River Segment S025",
+        "name": "Nag River - Punapur Border",
         "length_km": 0.37,
         "priority_score": 87,
         "priority_level": "Critical",

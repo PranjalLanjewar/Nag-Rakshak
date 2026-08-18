@@ -181,11 +181,40 @@ def split_into_segments(coords, num_segments=25):
             elif priority_score > 50: priority_level = 'High'
             elif priority_score > 25: priority_level = 'Moderate'
             
+            localities = [
+                "Ambazari Outlet Part 1",
+                "Ambazari Outlet Part 2",
+                "Ambazari Layout",
+                "Dharampeth Part 1",
+                "Dharampeth Part 2",
+                "Ramdaspeth Part 1",
+                "Ramdaspeth Part 2",
+                "Dhantoli Part 1",
+                "Dhantoli Part 2",
+                "Baidyanath Chowk Part 1",
+                "Baidyanath Chowk Part 2",
+                "Great Nag Road Part 1",
+                "Great Nag Road Part 2",
+                "Great Nag Road Part 3",
+                "Reshimbagh Part 1",
+                "Reshimbagh Part 2",
+                "Ashok Nagar Part 1",
+                "Ashok Nagar Part 2",
+                "Pardi Part 1",
+                "Pardi Part 2",
+                "Pardi Part 3",
+                "Pardi Part 4",
+                "Bhandara Road Part 1",
+                "Bhandara Road Part 2",
+                "Punapur Border"
+            ]
+            locality_name = localities[current_seg_idx] if current_seg_idx < len(localities) else f"Segment {segment_id}"
+            
             features.append({
                 "type": "Feature",
                 "properties": {
                     "segment_id": segment_id,
-                    "name": f"Nag River Segment {segment_id}",
+                    "name": f"Nag River - {locality_name}",
                     "length_km": l_km,
                     "priority_score": priority_score,
                     "priority_level": priority_level,
