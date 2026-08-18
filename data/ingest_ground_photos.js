@@ -118,7 +118,12 @@ async function run() {
       if (!targetMockSegment.ground_evidence) {
         targetMockSegment.ground_evidence = [];
       }
-      targetMockSegment.ground_evidence.push(evidenceObj);
+      const existingIdx = targetMockSegment.ground_evidence.findIndex(ev => ev.id === evidenceObj.id);
+      if (existingIdx === -1) {
+        targetMockSegment.ground_evidence.push(evidenceObj);
+      } else {
+        targetMockSegment.ground_evidence[existingIdx] = evidenceObj;
+      }
       targetMockSegment.has_ground_data = true;
 
       // Re-fuse score using new ground score

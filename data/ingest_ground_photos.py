@@ -421,8 +421,16 @@ def main():
             if mock_seg["segment_id"] == closest_seg_id:
                 if "ground_evidence" not in mock_seg or mock_seg["ground_evidence"] is None:
                     mock_seg["ground_evidence"] = []
-                # Append new observation
-                mock_seg["ground_evidence"].append(evidence_obj)
+                
+                # Prevent duplicate observation entries by ID
+                existing_ids = [ev["id"] for ev in mock_seg["ground_evidence"]]
+                if evidence_obj["id"] not in existing_ids:
+                    mock_seg["ground_evidence"].append(evidence_obj)
+                else:
+                    # Update in-place
+                    idx = existing_ids.index(evidence_obj["id"])
+                    mock_seg["ground_evidence"][idx] = evidence_obj
+                    
                 mock_seg["has_ground_data"] = True
                 
                 # Re-fuse score using satellite score + ground score

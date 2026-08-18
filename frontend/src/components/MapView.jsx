@@ -74,8 +74,7 @@ export default function MapView({ theme, segments, selectedSegmentId, onSelectSe
 
         {/* Render Ground Photo Markers */}
         {segments.map((seg) => {
-          if (!seg.centroid) return null;
-          const isCriticalOrHigh = seg.priority_level === 'Critical' || seg.priority_level === 'High';
+          if (!seg.centroid || !seg.has_ground_data) return null;
           return (
             <Marker
               key={`marker-${seg.segment_id}`}
