@@ -72,9 +72,9 @@ export default function MapView({ theme, segments, selectedSegmentId, onSelectSe
           onEachFeature={onEachFeature}
         />
 
-        {/* Render Ground Photo Markers */}
+        {/* Render Segment Markers */}
         {segments.map((seg) => {
-          if (!seg.centroid || !seg.has_ground_data) return null;
+          if (!seg.centroid) return null;
           return (
             <Marker
               key={`marker-${seg.segment_id}`}
