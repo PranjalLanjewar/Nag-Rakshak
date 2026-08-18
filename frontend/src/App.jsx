@@ -89,7 +89,7 @@ export default function App() {
         {/* Collapsible Sidebar Button */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className={`absolute top-1/2 -translate-y-1/2 z-25 p-2 bg-dark-800 border border-dark-700 hover:bg-dark-700 rounded-l-xl transition-all duration-300 flex items-center justify-center text-gray-300 shadow-xl ${
+          className={`absolute top-1/2 -translate-y-1/2 z-[999] w-6 h-16 bg-dark-800 border border-dark-700 hover:bg-dark-700 rounded-l-xl transition-all duration-300 flex items-center justify-center text-gray-300 hover:text-white shadow-2xl ${
             isSidebarOpen ? 'right-[420px]' : 'right-0'
           }`}
           style={{ borderRight: 'none' }}

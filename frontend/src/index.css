@@ -65,6 +65,18 @@ header, div, button, span, h1, h2, h3, h4, p, label, select, textarea, input {
   background-color: #cbd5e1 !important;
 }
 
+.light .bg-dark-800\/90 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.light .bg-dark-900\/60 {
+  background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+.light .bg-dark-900\/50 {
+  background-color: rgba(241, 245, 249, 0.5) !important;
+}
+
 .light .border-dark-700 {
   border-color: #e2e8f0 !important;
 }

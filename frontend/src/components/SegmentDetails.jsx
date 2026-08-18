@@ -11,6 +11,36 @@ function getPriorityBadgeClass(level) {
   }
 }
 
+function getPriorityTextColor(level) {
+  switch (level) {
+    case 'Critical': return 'text-red-500';
+    case 'High': return 'text-orange-500';
+    case 'Moderate': return 'text-amber-500';
+    case 'Low':
+    default: return 'text-emerald-500';
+  }
+}
+
+function getPriorityBarColor(level) {
+  switch (level) {
+    case 'Critical': return '#EF4444';
+    case 'High': return '#F97316';
+    case 'Moderate': return '#F59E0B';
+    case 'Low':
+    default: return '#10B981';
+  }
+}
+
+function getPriorityShadowColor(level) {
+  switch (level) {
+    case 'Critical': return 'rgba(239, 68, 68, 0.15)';
+    case 'High': return 'rgba(249, 115, 22, 0.15)';
+    case 'Moderate': return 'rgba(245, 158, 11, 0.15)';
+    case 'Low':
+    default: return 'rgba(16, 185, 129, 0.15)';
+  }
+}
+
 export default function SegmentDetails({ theme, segment, onOpenUpload }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -25,6 +55,7 @@ export default function SegmentDetails({ theme, segment, onOpenUpload }) {
 
   const sat = segment.satellite_metrics || {};
   const groundEvList = segment.ground_evidence || [];
+  const score = segment.priority_score ?? segment.investigation_priority_score ?? 0;
 
   return (
     <div className="h-full bg-dark-800 border-l border-dark-700 overflow-y-auto p-6 space-y-6">
@@ -41,18 +72,38 @@ export default function SegmentDetails({ theme, segment, onOpenUpload }) {
       </div>
 
       {/* Main Priority Score Box */}
-      <div className="bg-dark-900 p-4 rounded-xl border border-dark-700 flex items-center justify-between">
-        <div>
-          <span className="text-xs text-gray-400 uppercase tracking-wider block">Investigation Priority Score</span>
-          <span className="text-3xl font-extrabold text-white mt-1 block">
-            {segment.priority_score ?? segment.investigation_priority_score} <span className="text-sm font-normal text-gray-400">/ 100</span>
-          </span>
+      <div 
+        className="bg-dark-900 p-5 rounded-xl border border-dark-700 relative overflow-hidden transition-all duration-500"
+        style={{
+          boxShadow: `0 8px 30px ${getPriorityShadowColor(segment.priority_level)}`,
+          borderLeft: `5px solid ${getPriorityBarColor(segment.priority_level)}`
+        }}
+      >
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-xs text-gray-400 uppercase tracking-wider block font-semibold">Investigation Priority Score</span>
+            <span className={`text-4xl font-black mt-1 block transition-all duration-300 ${getPriorityTextColor(segment.priority_level)}`}>
+              {score} <span className="text-sm font-normal text-gray-400">/ 100</span>
+            </span>
+          </div>
+          <div className="text-right">
+            <span className="text-xs text-gray-400 block font-semibold">Evidence Source</span>
+            <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20 mt-1 inline-block">
+              {segment.evidence_agreement || 'Satellite + Ground Fused'}
+            </span>
+          </div>
         </div>
-        <div className="text-right">
-          <span className="text-xs text-gray-400 block">Evidence Source</span>
-          <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20 mt-1 inline-block">
-            {segment.evidence_agreement || 'Satellite + Ground Fused'}
-          </span>
+
+        {/* Animated Progress Bar */}
+        <div className="mt-4 w-full bg-dark-700/50 rounded-full h-2.5 overflow-hidden">
+          <div
+            className="h-full rounded-full transition-all duration-1000 ease-out"
+            style={{
+              width: `${score}%`,
+              backgroundColor: getPriorityBarColor(segment.priority_level),
+              boxShadow: `0 0 8px ${getPriorityBarColor(segment.priority_level)}`
+            }}
+          />
         </div>
       </div>
 
