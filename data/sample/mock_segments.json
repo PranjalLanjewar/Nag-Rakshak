@@ -276,11 +276,68 @@
         },
         "ground_score": 49,
         "notes": "Ingested Ground Photo img_3.jpg at [21.1371394, 79.0699631]"
+      },
+      {
+        "id": "ev-S009-1",
+        "segment_id": "S009",
+        "photo_url": "/assests/Images/img_1.jpg",
+        "uploaded_at": "2026-08-18T03:20:45.275022Z",
+        "location": {
+          "lat": 21.1370155,
+          "lng": 79.0694487
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 33,
+        "notes": "Ingested Ground Photo img_1.jpg at [21.1370155, 79.0694487]"
+      },
+      {
+        "id": "ev-S009-2",
+        "segment_id": "S009",
+        "photo_url": "/assests/Images/img_2.jpg",
+        "uploaded_at": "2026-08-18T03:20:51.937105Z",
+        "location": {
+          "lat": 21.1371006,
+          "lng": 79.0699879
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 41,
+        "notes": "Ingested Ground Photo img_2.jpg at [21.1371006, 79.0699879]"
+      },
+      {
+        "id": "ev-S009-3",
+        "segment_id": "S009",
+        "photo_url": "/assests/Images/img_3.jpg",
+        "uploaded_at": "2026-08-18T03:20:59.715689Z",
+        "location": {
+          "lat": 21.1371394,
+          "lng": 79.0699631
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 49,
+        "notes": "Ingested Ground Photo img_3.jpg at [21.1371394, 79.0699631]"
       }
     ],
     "evidence_agreement": "High Agreement",
     "recommended_action": "Scheduled monitoring.",
-    "last_updated": "2026-08-18T03:05:05.229858Z",
+    "last_updated": "2026-08-18T03:21:00.594846Z",
     "has_ground_data": true
   },
   {
@@ -417,11 +474,125 @@
         },
         "ground_score": 27,
         "notes": "Ingested Ground Photo img_9.jpg at [21.1379884, 79.0737922]"
+      },
+      {
+        "id": "ev-S010-4",
+        "segment_id": "S010",
+        "photo_url": "/assests/Images/img_4.jpg",
+        "uploaded_at": "2026-08-18T03:21:03.728947Z",
+        "location": {
+          "lat": 21.1371963,
+          "lng": 79.070533
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.85
+        },
+        "ground_score": 57,
+        "notes": "Ingested Ground Photo img_4.jpg at [21.1371963, 79.070533]"
+      },
+      {
+        "id": "ev-S010-5",
+        "segment_id": "S010",
+        "photo_url": "/assests/Images/img_5.jpg",
+        "uploaded_at": "2026-08-18T03:21:08.773418Z",
+        "location": {
+          "lat": 21.1373892,
+          "lng": 79.0712126
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 65,
+        "notes": "Ingested Ground Photo img_5.jpg at [21.1373892, 79.0712126]"
+      },
+      {
+        "id": "ev-S010-6",
+        "segment_id": "S010",
+        "photo_url": "/assests/Images/img_6.jpg",
+        "uploaded_at": "2026-08-18T03:21:10.525200Z",
+        "location": {
+          "lat": 21.1375412,
+          "lng": 79.0718828
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 73,
+        "notes": "Ingested Ground Photo img_6.jpg at [21.1375412, 79.0718828]"
+      },
+      {
+        "id": "ev-S010-7",
+        "segment_id": "S010",
+        "photo_url": "/assests/Images/img_7.jpg",
+        "uploaded_at": "2026-08-18T03:21:12.404114Z",
+        "location": {
+          "lat": 21.1376694,
+          "lng": 79.0724917
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 81,
+        "notes": "Ingested Ground Photo img_7.jpg at [21.1376694, 79.0724917]"
+      },
+      {
+        "id": "ev-S010-8",
+        "segment_id": "S010",
+        "photo_url": "/assests/Images/img_8.jpg",
+        "uploaded_at": "2026-08-18T03:21:14.563746Z",
+        "location": {
+          "lat": 21.1377929,
+          "lng": 79.07272
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.85
+        },
+        "ground_score": 89,
+        "notes": "Ingested Ground Photo img_8.jpg at [21.1377929, 79.07272]"
+      },
+      {
+        "id": "ev-S010-9",
+        "segment_id": "S010",
+        "photo_url": "/assests/Images/img_9.jpg",
+        "uploaded_at": "2026-08-18T03:21:33.743930Z",
+        "location": {
+          "lat": 21.1379884,
+          "lng": 79.0737922
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 27,
+        "notes": "Ingested Ground Photo img_9.jpg at [21.1379884, 79.0737922]"
       }
     ],
     "evidence_agreement": "High Agreement",
     "recommended_action": "Scheduled monitoring.",
-    "last_updated": "2026-08-18T03:05:05.231373Z",
+    "last_updated": "2026-08-18T03:21:36.184697Z",
     "has_ground_data": true
   },
   {
@@ -596,11 +767,163 @@
         },
         "ground_score": 91,
         "notes": "Ingested Ground Photo img_17.jpg at [21.1389381, 79.0771886]"
+      },
+      {
+        "id": "ev-S011-10",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_10.jpg",
+        "uploaded_at": "2026-08-18T03:21:57.422059Z",
+        "location": {
+          "lat": 21.1380675,
+          "lng": 79.0740849
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 35,
+        "notes": "Ingested Ground Photo img_10.jpg at [21.1380675, 79.0740849]"
+      },
+      {
+        "id": "ev-S011-11",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_11.jpg",
+        "uploaded_at": "2026-08-18T03:22:03.226223Z",
+        "location": {
+          "lat": 21.1381898,
+          "lng": 79.0745869
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 43,
+        "notes": "Ingested Ground Photo img_11.jpg at [21.1381898, 79.0745869]"
+      },
+      {
+        "id": "ev-S011-12",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_12.jpg",
+        "uploaded_at": "2026-08-18T03:22:18.181864Z",
+        "location": {
+          "lat": 21.1382436,
+          "lng": 79.0747304
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.85
+        },
+        "ground_score": 51,
+        "notes": "Ingested Ground Photo img_12.jpg at [21.1382436, 79.0747304]"
+      },
+      {
+        "id": "ev-S011-13",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_13.jpg",
+        "uploaded_at": "2026-08-18T03:22:32.803009Z",
+        "location": {
+          "lat": 21.1384171,
+          "lng": 79.0753556
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 59,
+        "notes": "Ingested Ground Photo img_13.jpg at [21.1384171, 79.0753556]"
+      },
+      {
+        "id": "ev-S011-14",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_14.jpg",
+        "uploaded_at": "2026-08-18T03:22:54.732585Z",
+        "location": {
+          "lat": 21.1385469,
+          "lng": 79.0758405
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 67,
+        "notes": "Ingested Ground Photo img_14.jpg at [21.1385469, 79.0758405]"
+      },
+      {
+        "id": "ev-S011-15",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_15.jpg",
+        "uploaded_at": "2026-08-18T03:23:05.045685Z",
+        "location": {
+          "lat": 21.1386579,
+          "lng": 79.0763611
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 75,
+        "notes": "Ingested Ground Photo img_15.jpg at [21.1386579, 79.0763611]"
+      },
+      {
+        "id": "ev-S011-16",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_16.jpg",
+        "uploaded_at": "2026-08-18T03:23:08.896098Z",
+        "location": {
+          "lat": 21.1388803,
+          "lng": 79.0769294
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.85
+        },
+        "ground_score": 83,
+        "notes": "Ingested Ground Photo img_16.jpg at [21.1388803, 79.0769294]"
+      },
+      {
+        "id": "ev-S011-17",
+        "segment_id": "S011",
+        "photo_url": "/assests/Images/img_17.jpg",
+        "uploaded_at": "2026-08-18T03:23:17.482344Z",
+        "location": {
+          "lat": 21.1389381,
+          "lng": 79.0771886
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 91,
+        "notes": "Ingested Ground Photo img_17.jpg at [21.1389381, 79.0771886]"
       }
     ],
     "evidence_agreement": "High Agreement",
     "recommended_action": "Priority field investigation.",
-    "last_updated": "2026-08-18T03:05:05.233270Z",
+    "last_updated": "2026-08-18T03:23:19.276455Z",
     "has_ground_data": true
   },
   {
@@ -661,11 +984,49 @@
         },
         "ground_score": 37,
         "notes": "Ingested Ground Photo img_19.jpg at [21.1393912, 79.0785538]"
+      },
+      {
+        "id": "ev-S012-18",
+        "segment_id": "S012",
+        "photo_url": "/assests/Images/img_18.jpg",
+        "uploaded_at": "2026-08-18T03:23:27.775645Z",
+        "location": {
+          "lat": 21.1392658,
+          "lng": 79.078228
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 29,
+        "notes": "Ingested Ground Photo img_18.jpg at [21.1392658, 79.078228]"
+      },
+      {
+        "id": "ev-S012-19",
+        "segment_id": "S012",
+        "photo_url": "/assests/Images/img_19.jpg",
+        "uploaded_at": "2026-08-18T03:23:35.183694Z",
+        "location": {
+          "lat": 21.1393912,
+          "lng": 79.0785538
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 37,
+        "notes": "Ingested Ground Photo img_19.jpg at [21.1393912, 79.0785538]"
       }
     ],
     "evidence_agreement": "High Agreement",
     "recommended_action": "Scheduled monitoring.",
-    "last_updated": "2026-08-18T03:05:05.233735Z",
+    "last_updated": "2026-08-18T03:23:35.858956Z",
     "has_ground_data": true
   },
   {
@@ -764,11 +1125,87 @@
         },
         "ground_score": 69,
         "notes": "Ingested Ground Photo img_23.jpg at [21.140213, 79.0841975]"
+      },
+      {
+        "id": "ev-S013-20",
+        "segment_id": "S013",
+        "photo_url": "/assests/Images/img_20.jpg",
+        "uploaded_at": "2026-08-18T03:23:40.890304Z",
+        "location": {
+          "lat": 21.1405958,
+          "lng": 79.0831981
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.85
+        },
+        "ground_score": 45,
+        "notes": "Ingested Ground Photo img_20.jpg at [21.1405958, 79.0831981]"
+      },
+      {
+        "id": "ev-S013-21",
+        "segment_id": "S013",
+        "photo_url": "/assests/Images/img_21.jpg",
+        "uploaded_at": "2026-08-18T03:24:05.533946Z",
+        "location": {
+          "lat": 21.1405917,
+          "lng": 79.0833399
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 53,
+        "notes": "Ingested Ground Photo img_21.jpg at [21.1405917, 79.0833399]"
+      },
+      {
+        "id": "ev-S013-22",
+        "segment_id": "S013",
+        "photo_url": "/assests/Images/img_22.jpg",
+        "uploaded_at": "2026-08-18T03:24:27.221849Z",
+        "location": {
+          "lat": 21.1404351,
+          "lng": 79.0839813
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": true,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 61,
+        "notes": "Ingested Ground Photo img_22.jpg at [21.1404351, 79.0839813]"
+      },
+      {
+        "id": "ev-S013-23",
+        "segment_id": "S013",
+        "photo_url": "/assests/Images/img_23.jpg",
+        "uploaded_at": "2026-08-18T03:24:38.995973Z",
+        "location": {
+          "lat": 21.140213,
+          "lng": 79.0841975
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 69,
+        "notes": "Ingested Ground Photo img_23.jpg at [21.140213, 79.0841975]"
       }
     ],
     "evidence_agreement": "High Agreement",
     "recommended_action": "Priority field investigation.",
-    "last_updated": "2026-08-18T03:05:05.234865Z",
+    "last_updated": "2026-08-18T03:24:39.828124Z",
     "has_ground_data": true
   },
   {
@@ -829,11 +1266,49 @@
         },
         "ground_score": 85,
         "notes": "Ingested Ground Photo img_25.jpg at [21.1389015, 79.0855122]"
+      },
+      {
+        "id": "ev-S014-24",
+        "segment_id": "S014",
+        "photo_url": "/assests/Images/img_24.jpg",
+        "uploaded_at": "2026-08-18T03:25:03.753681Z",
+        "location": {
+          "lat": 21.139536,
+          "lng": 79.0850713
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": true,
+          "discoloration_detected": true,
+          "bank_degradation_detected": true,
+          "confidence_score": 0.85
+        },
+        "ground_score": 77,
+        "notes": "Ingested Ground Photo img_24.jpg at [21.139536, 79.0850713]"
+      },
+      {
+        "id": "ev-S014-25",
+        "segment_id": "S014",
+        "photo_url": "/assests/Images/img_25.jpg",
+        "uploaded_at": "2026-08-18T03:25:28.779489Z",
+        "location": {
+          "lat": 21.1389015,
+          "lng": 79.0855122
+        },
+        "ai_analysis": {
+          "waste_detected": true,
+          "foam_detected": false,
+          "discoloration_detected": false,
+          "bank_degradation_detected": false,
+          "confidence_score": 0.85
+        },
+        "ground_score": 85,
+        "notes": "Ingested Ground Photo img_25.jpg at [21.1389015, 79.0855122]"
       }
     ],
     "evidence_agreement": "High Agreement",
     "recommended_action": "Priority field investigation.",
-    "last_updated": "2026-08-18T03:05:05.235469Z",
+    "last_updated": "2026-08-18T03:25:29.257436Z",
     "has_ground_data": true
   },
   {

@@ -264,9 +264,26 @@ def update_supabase_segment(supabase_url, supabase_anon_key, segment_id, priorit
         with urllib.request.urlopen(req, timeout=15) as res:
             print(f"[Supabase DB] Updated segment {segment_id} priority to {priority_score} ({priority_level})")
             return True
+    except urllib.error.HTTPError as e:
+        res_body = e.read().decode("utf-8")
+        if "priority_score" in res_body:
+            # Fallback to older column name
+            payload_fallback = payload.copy()
+            del payload_fallback["priority_score"]
+            payload_fallback["investigation_priority_score"] = priority_score
+            
+            req_fb = urllib.request.Request(url, data=json.dumps(payload_fallback).encode("utf-8"), headers=headers, method="PATCH")
+            try:
+                with urllib.request.urlopen(req_fb, timeout=15) as res_fb:
+                    print(f"[Supabase DB] Updated segment {segment_id} (fallback) priority to {priority_score} ({priority_level})")
+                    return True
+            except Exception as e_fb:
+                print(f"[Supabase DB] Fallback failed to update segment {segment_id}: {e_fb}")
+        else:
+            print(f"[Supabase DB] Failed to update segment {segment_id}: {res_body}")
     except Exception as e:
         print(f"[Supabase DB] Failed to update segment {segment_id}: {e}")
-        return False
+    return False
 
 def check_gemini_liveness():
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={API_KEY}"
@@ -305,8 +322,8 @@ def main():
     with open(mock_segments_path, "r") as f:
         mock_segments = json.load(f)
         
-    # Check if live database is enabled (disabled for REST writes due to RLS policies; SQL seeder must be used instead)
-    has_live_db = False
+    # Check if live database is enabled
+    has_live_db = SUPABASE_URL and SUPABASE_ANON_KEY and ("your-project" not in SUPABASE_URL)
     if has_live_db:
         print(f"[Ingestion Pipeline] Live Supabase database detected: {SUPABASE_URL}")
         print("[Ingestion Pipeline] Ingesting files to live storage and database tables...")
